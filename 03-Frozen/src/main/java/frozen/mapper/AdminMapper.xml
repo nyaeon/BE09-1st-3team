@@ -45,5 +45,10 @@
         WHERE name = ?
     </entry>
 
+    <entry key="deleteRecipe">
+        <![CDATA[
+           DELETE FROM recipe WHERE TRIM(LOWER(name)) = TRIM(LOWER(?))
+        ]]>
+    </entry>
 
 </properties>

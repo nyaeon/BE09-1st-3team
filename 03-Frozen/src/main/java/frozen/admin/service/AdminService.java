@@ -83,4 +83,29 @@ public class AdminService {
             close(con);
         }
     }
+
+    public int deleteRecipe(String name){
+        Connection con = null;
+        int result = 0;
+
+        try {
+            con = getConnection();
+            con.setAutoCommit(false);
+
+            result = ar.deleteRecipe(con, name);
+
+            if (result > 0) {
+                commit(con);
+            } else {
+                rollback(con);
+            }
+        } catch (SQLException e) {
+            rollback(con);
+            System.out.println("❌ 삭제 중 오류가 발생했습니다: " + e.getMessage());
+        } finally {
+            close(con);
+        }
+
+        return result;
+    }
 }

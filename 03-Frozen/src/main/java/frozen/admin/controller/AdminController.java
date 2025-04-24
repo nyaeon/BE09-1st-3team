@@ -57,4 +57,13 @@ public class AdminController {
             System.out.println("❌ 레시피 수정 실패!");
         }
     }
+
+    public void deleteRecipe(String name) {
+        try {
+            as.deleteRecipe(name);
+            System.out.println("✅ 레시피 삭제가 완료되었습니다.");
+        } catch (Exception e) {
+            System.out.println("❌ 삭제 중 오류가 발생했습니다.");
+        }
+    }
 }

@@ -40,7 +40,8 @@ public class AdminView {
                     viewAllRecipes(ac); break;
                 case 3:
                     updateRecipe(ac, sc); break;
-//                case 4: ac.deleteRecipe();
+                case 4:
+                    deleteRecipe(ac, sc); break;
                 case 9: return;
                 default:
                     System.out.println("번호를 잘못 입력하셨습니다.");
@@ -138,6 +139,14 @@ public class AdminView {
         ac.updateRecipe(recipe, oldName);
         System.out.println("수정된 레시피:");
         System.out.println(recipe);
+    }
+
+    // 레시피 삭제 기능
+    private static void deleteRecipe(AdminController ac, Scanner sc) {
+
+        System.out.print("삭제할 레시피의 이름을 입력하세요: ");
+        String name = sc.nextLine();
+        ac.deleteRecipe(name);
     }
 
 }

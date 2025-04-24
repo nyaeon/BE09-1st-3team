@@ -142,4 +142,24 @@ public class AdminRepository {
     }
 
 
+    public int deleteRecipe(Connection con, String name) {
+        int result = 0;
+        PreparedStatement pstmt = null;
+
+        // XML 파일에서 쿼리 읽어오기
+        String query = prop.getProperty("deleteRecipe");
+
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, name);  // 삭제할 레시피 이름
+
+            result = pstmt.executeUpdate();  // 쿼리 실행
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);  // PreparedStatement 자원 해제
+        }
+
+        return result;
+    }
 }
