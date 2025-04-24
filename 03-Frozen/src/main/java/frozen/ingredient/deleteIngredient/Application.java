@@ -21,7 +21,7 @@ public class Application {
 
         Management management = new Management(LocalDate.now(),checkDelete,deleteAmount,delete);
         managemenntService managementService = new managemenntService();
-        managementService.updateDelete(menagement);
+//        managementService.updateDelete(menagement);
 
     }
 }
