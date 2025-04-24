@@ -5,7 +5,7 @@
 - 프로젝트 기간 : 2025-04-22 ~ 2025-04-24
 
 # 팀원 구성
-| 임나영 | 이나영 | 임현우 | 박창준 |
+| 임나연 | 이나영 | 임현우 | 박창준 |
 |--------|--------|--------|--------|
 | ![임나영](https://avatars.githubusercontent.com/u/106491547?v=4) | ![이나영](https://avatars.githubusercontent.com/u/123456789?v=4) | ![임현우](https://avatars.githubusercontent.com/u/106491547?v=4) | ![박창준](https://avatars.githubusercontent.com/u/123456789?v=4) |
 | [GitHub](https://github.com/nyaeon) | [GitHub](https://github.com/NYoungLEE) | [GitHub](https://github.com/LimHub) | [GitHub](https://github.com/changjunpark13) |
