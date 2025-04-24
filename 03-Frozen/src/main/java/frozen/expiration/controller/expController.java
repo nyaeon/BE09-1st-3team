@@ -9,6 +9,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Scanner;
 
+import static frozen.main.Application.expCon;
+
 public class expController {
 
     public static void expireRun() {
@@ -30,7 +32,7 @@ public class expController {
                 원하는 메뉴 번호를 입력해주세요 :""";
 
         while (true){
-            System.out.println(menu);
+            System.out.print(menu);
             menu = sc.nextLine();
             switch (menu){
                 case "1": {
@@ -45,6 +47,8 @@ public class expController {
                                     item.getExpDate().toString(), num);
                         }
                     }
+                    System.out.println();
+                    expCon.expireRun();
                     break;
                 }
                 case "2": {
@@ -58,6 +62,8 @@ public class expController {
                                     item.getName(), item.getAmount(), item.getLocation(), item.getExpDate().toString(), num);
                         }
                     }
+                    System.out.println();
+                    expCon.expireRun();
                     break;
                 }
                 case "3":

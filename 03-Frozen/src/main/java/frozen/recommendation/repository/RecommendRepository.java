@@ -49,7 +49,7 @@ public class RecommendRepository {
                 resultIng.setExpDate(rs.getDate("expDate").toLocalDate());
                 resultIng.setLocation(rs.getString("location"));
 
-                int num = (int) ChronoUnit.DAYS.between(LocalDate.now(), ing.getExpDate());
+                int num = (int) ChronoUnit.DAYS.between(LocalDate.now(), resultIng.getExpDate());
 
                 // 유통기한이 지나지 않은 재료들의 목록을 출력
                 if(num > 0){
