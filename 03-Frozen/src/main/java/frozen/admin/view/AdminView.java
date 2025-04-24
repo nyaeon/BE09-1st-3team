@@ -137,7 +137,6 @@ public class AdminView {
         }
 
         ac.updateRecipe(recipe, oldName);
-        System.out.println("❌ 잘못된 선택입니다. 다시 시도해주세요.");
         System.out.println(recipe);
     }
 

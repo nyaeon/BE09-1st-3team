@@ -1,9 +1,11 @@
 package frozen.main;
 
+import frozen.admin.view.AdminView;
 import frozen.expiration.controller.expController;
 import frozen.ingredient.controller.ingCon;
 import frozen.recommendation.controller.recController;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import static frozen.member.controller.MemberController2.memController;
@@ -103,9 +105,19 @@ public class Application {
                 case 3: recCon.recommendController(); break;
                 case 4: break;
                 case 5: memController.myPage(); break;
+                case 6: showAdminMenu(); break;
                 case 0: return;
                 default: break;
             }
+        }
+    }
+
+    private static void showAdminMenu() {
+        try {
+            AdminView.main(new String[0]);  // AdminView에서 main 메서드를 호출
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("❌ 데이터베이스 오류가 발생했습니다.");
         }
     }
 }

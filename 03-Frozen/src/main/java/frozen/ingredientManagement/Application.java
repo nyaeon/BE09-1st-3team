@@ -1,5 +1,9 @@
 package frozen.ingredientManagement;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -23,4 +27,34 @@ public class Application {
             }
         }
     }
+//
+//    public int disposeIngredient(Connection con) {
+//        PreparedStatement pstmt2 = null;
+//        ResultSet rs = null;
+//        int result = 0;
+//
+//        try {
+//
+//            LocalDate now = LocalDate.now();
+//            LocalDate targetDate =  ;
+
+//            if(!targetDate.isBefore(now.minusMonths(1))) {
+//                String selectSql = "SELECT * FROM exp_ingredients WHERE date >= ? ORDER BY date DESC";
+//                pstmt2 = con.prepareStatement(selectSql);
+//                pstmt2.setDate(1, Date.valueOf(now.minusMonths(1)));
+//                rs = pstmt2.executeQuery();
+//
+//                while (rs.next()) {
+//                    System.out.println(rs.toString());
+//                }
+//            }
+
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }finally {
+//            close(rs);
+//            close(pstmt2);
+//        }
+//        return result;
+//    }
 }
