@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment/>
+    <entry key="insertIngredient">
+        INSERT INTO ingredients  (name ,amount ,expDate ,location)
+        VALUES (?,?,?,? )
+    </entry>
+    <entry key="updateIngredient">
+        UPDATE ingredients
+            SET
+                amount = ?
+             ,  expDate = ?
+             ,  location = ?
+            WHERE name = ?
+    </entry>
+    <entry key="deleteIngredient">
+        DELETE
+        FROM ingredients
+        WHERE name = ? AND expDate = ?
+    </entry>
+    <entry key="checkIngredient">
+        SELECT
+              name
+            , amount
+            , expDate
+            , location
+        FROM ingredients
+    </entry>
+    <entry key="insertDelete">
+        INSERT
+        INTO exp_ingredients
+        (
+        delDate
+        ,   reason
+        ,   amount
+        ,   name
+        )
+        VALUES
+        (
+        ?
+        , ?
+        , ?
+        , ?
+        )
+    </entry>
+</properties>
