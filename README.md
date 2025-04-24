@@ -269,14 +269,14 @@
 화면 명세서와 스토리 보드
 
 # 기술스택
-- 프로그래밍 언어
+- **프로그래밍 언어** : 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-- DB (데이터베이스)
+- **DB(데이터베이스)** :
 ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
-- 버전 관리
+- **버전 관리** : 
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
-- 개발 도구
+- **개발 도구** :
 ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white)
 
 
