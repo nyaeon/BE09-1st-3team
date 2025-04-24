@@ -30,9 +30,8 @@ public class ingredientRepository {
         int result = 0;
 
         try {
-            String sql = prop.getProperty("insertIngredient");
-            System.out.println("sql = " + sql);
 
+            String sql = prop.getProperty("insertIngredient");
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, ingred.getIngredientName());
             pstmt.setInt(2, ingred.getAmount());
@@ -65,11 +64,7 @@ public class ingredientRepository {
                 ing.setDeadLine(LocalDate.parse(rs.getString("expDate")));
                 ing.setLocation(rs.getString("location"));
 
-                System.out.println("=== Ingredient 정보 ===");
-                System.out.println("이름: " + ing.getIngredientName());
-                System.out.println("수량: " + ing.getAmount());
-                System.out.println("유통기한: " + ing.getDeadLine());
-                System.out.println("보관 위치: " + ing.getLocation());
+                System.out.println(ing.toString());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -80,20 +75,19 @@ public class ingredientRepository {
         return result;
     }
 
-    public int updateMenu(Connection con, Ingredient modifyIngredient) {
+    public int updateIngredient(Connection con, Ingredient modifyIng) {
 
         PreparedStatement pstmt = null;
         int result = 0;
 
         try {
             String sql = prop.getProperty("updateIngredient");
-            System.out.println("sql = " + sql);
 
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, modifyIngredient.getIngredientName());
-            pstmt.setInt(2, modifyIngredient.getAmount());
-            pstmt.setDate(3, Date.valueOf(modifyIngredient.getDeadLine()));
-            pstmt.setString(4, modifyIngredient.getLocation());
+            pstmt.setString(1, modifyIng.getIngredientName());
+            pstmt.setInt(2, modifyIng.getAmount());
+            pstmt.setDate(3, Date.valueOf(modifyIng.getDeadLine()));
+            pstmt.setString(4, modifyIng.getLocation());
 
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -104,5 +98,42 @@ public class ingredientRepository {
 
         return result;
     }
+
+    public Ingredient deleteIngredient(Connection con, String ingredientName, LocalDate expDate) {
+        Ingredient ing = new Ingredient();
+        PreparedStatement pstmt = null;
+        PreparedStatement pstmt2 = null;
+        ResultSet rs = null;
+        int result = 0;
+
+        try {
+
+            String sqlDelete = "SELECT name, amount FROM ingredients WHERE name = ? AND expDate = ?";
+
+            pstmt2 = con.prepareStatement(sqlDelete);
+            pstmt2.setString(1, ingredientName);
+            pstmt2.setDate(2, Date.valueOf(expDate));
+            rs = pstmt2.executeQuery();
+            if (rs.next()) {
+                ing.setIngredientName(rs.getString("name"));
+                ing.setAmount(rs.getInt("amount"));;
+            }
+            String sql = prop.getProperty("deleteIngredient");
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, ingredientName);
+            pstmt.setDate(2, Date.valueOf(expDate));
+
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(rs);
+            close(pstmt);
+            close(pstmt2);
+        }
+        return ing;
+    }
+
 
 }

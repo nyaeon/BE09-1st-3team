@@ -1,13 +1,12 @@
 package frozen.ingredientManagement;
 
-import java.awt.*;
 import java.sql.Connection;
 
 import static frozen.common.JDBCTemplate.*;
 
 public class managemenntService {
     managementRepository managementRepo = new managementRepository();
-    public int updateDelete(Management menu) {
+    public void updateDelete(Menagement menu) {
 
         Connection con = getConnection();
         int result = managementRepo.updateDeletemenu(con, menu);
@@ -16,6 +15,10 @@ public class managemenntService {
         } else {
             rollback(con);
         }
-        return result;
+    }
+
+    public void disposeIngredient(Menagement menu) {
+        Connection con = getConnection();
+
     }
 }

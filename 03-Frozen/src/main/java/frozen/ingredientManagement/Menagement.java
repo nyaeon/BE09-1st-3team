@@ -2,20 +2,20 @@ package frozen.ingredientManagement;
 
 import java.time.LocalDate;
 
-public class Management {
+public class Menagement {
     private LocalDate date;
     private int reason;
     private int amount;
     private String name;
 
-    public Management(LocalDate date, int reason, int amount, String name) {
+    public Menagement(LocalDate date, int reason, int amount, String name) {
         this.date = date;
         this.reason = reason;
         this.amount = amount;
         this.name = name;
     }
 
-    public Management() {
+    public Menagement() {
 
     }
 

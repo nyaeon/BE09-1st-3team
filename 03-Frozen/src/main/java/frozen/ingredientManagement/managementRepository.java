@@ -21,7 +21,7 @@ public class managementRepository {
             throw new RuntimeException(e);
         }
     }
-    public int updateDeletemenu(Connection con,Management management) {
+    public int updateDeletemenu(Connection con, Menagement management) {
         PreparedStatement pstmt = null;
         int result = 0;
 
@@ -30,7 +30,7 @@ public class managementRepository {
 
             pstmt = con.prepareStatement(sql);
             pstmt.setDate(1, Date.valueOf(management.getDate()));
-            pstmt.setInt(2, management.getAmount());
+            pstmt.setInt(2, management.getReason());
             pstmt.setInt(3, management.getAmount());
             pstmt.setString(4, management.getName());
 
