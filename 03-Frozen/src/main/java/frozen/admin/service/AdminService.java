@@ -5,21 +5,30 @@ import frozen.admin.repository.AdminRepository;
 
 import java.sql.Connection;
 
-import static frozen.common.JDBCTemplate.getConnection;
+import static frozen.common.JDBCTemplate.*;
 
 public class AdminService {
 
-    private final AdminRepository ar;
-
-    public AdminService() {
-        ar = new AdminRepository();
-    }
+    private final AdminRepository ar = new AdminRepository();
 
 
-
-    public void insertRecipe(AdminDTO recipe) {
+    public int insertRecipe(AdminDTO recipe) {
 
         Connection con = getConnection();
+
+        int result = ar.insertRecipe(con, recipe);
+
+
+        if (result > 0) {
+
+            commit(con);
+        } else {
+            rollback(con);
+        }
+
+        close(con);
+
+        return result;
 
     }
 

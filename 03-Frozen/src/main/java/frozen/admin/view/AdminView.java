@@ -1,5 +1,6 @@
 package frozen.admin.view;
 
+import frozen.admin.controller.AdminController;
 import frozen.admin.dto.AdminDTO;
 import frozen.admin.service.AdminService;
 
@@ -9,7 +10,7 @@ public class AdminView {
 
     public static void main(String[] args) {
 
-        AdminService as = new AdminService();
+        AdminController ac = new AdminController();
 
         Scanner sc = new Scanner(System.in);
 
@@ -31,10 +32,10 @@ public class AdminView {
             switch (input) {
                 case 1:
                     AdminDTO recipe = getRecipeFromUser();
-                    as.insertRecipe(recipe); break;
-                case 2: as.selectRecipe();
-                case 3: as.updateRecipe();
-                case 4: as.deleteRecipe();
+                    ac.insertRecipe(recipe); break;
+//                case 2: ac.selectRecipe();
+//                case 3: ac.updateRecipe();
+//                case 4: ac.deleteRecipe();
                 case 9: return;
                 default:
                     System.out.println("번호를 잘못 입력하셨습니다.");

@@ -17,9 +17,13 @@ public class AdminController {
      * @param recipe 레시피 정보
      */
     public void insertRecipe(AdminDTO recipe) {
+        int result = as.insertRecipe(recipe);
 
-        as.insertRecipe(recipe);
+        if (result > 0) {
+            System.out.println("🎉 레시피 등록 성공!");
+        } else {
+            System.out.println("❌ 레시피 등록 실패!");
+        }
+
     }
-
-
 }
