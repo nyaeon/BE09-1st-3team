@@ -123,12 +123,12 @@ public class AdminRepository {
 
         try {
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, recipe.getMenuName());       // 새 이름
+            pstmt.setString(1, recipe.getMenuName());
             pstmt.setString(2, recipe.getIngredients());
             pstmt.setString(3, recipe.getMethod());
             pstmt.setString(4, recipe.getTime());
             pstmt.setInt(5, recipe.getLevel());
-            pstmt.setString(6, oldName);                    // WHERE 절에 기존 이름 사용
+            pstmt.setString(6, oldName);
 
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -146,18 +146,17 @@ public class AdminRepository {
         int result = 0;
         PreparedStatement pstmt = null;
 
-        // XML 파일에서 쿼리 읽어오기
         String query = prop.getProperty("deleteRecipe");
 
         try {
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, name);  // 삭제할 레시피 이름
+            pstmt.setString(1, name);
 
-            result = pstmt.executeUpdate();  // 쿼리 실행
+            result = pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            close(pstmt);  // PreparedStatement 자원 해제
+            close(pstmt);
         }
 
         return result;

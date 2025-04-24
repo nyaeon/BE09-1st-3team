@@ -44,7 +44,7 @@ public class AdminView {
                     deleteRecipe(ac, sc); break;
                 case 9: return;
                 default:
-                    System.out.println("번호를 잘못 입력하셨습니다.");
+                    System.out.println("❗ 잘못된 메뉴 번호입니다. 다시 선택해 주세요.");
 
             }
         }
@@ -56,19 +56,19 @@ public class AdminView {
     // 사용자의 레시피 입력을 받는 메소드
     private static AdminDTO getRecipeFromUser(Scanner sc) {
 
-        System.out.print("메뉴 이름: ");
+        System.out.print("🔺 메뉴 이름: ");
         String name = sc.nextLine();
 
-        System.out.print("레시피 재료: ");
+        System.out.print("🔺 레시피 재료: ");
         String ingredients = sc.nextLine();
 
-        System.out.print("조리 방법: ");
+        System.out.print("🔺 조리 방법: ");
         String method = sc.nextLine();
 
-        System.out.print("조리 시간(분): ");
+        System.out.print("🔺 조리 시간(분): ");
         String time = sc.nextLine();
 
-        System.out.print("난이도(1~5): ");
+        System.out.print("🔺 난이도(1~5): ");
         int level = sc.nextInt();
         sc.nextLine();
 
@@ -91,16 +91,16 @@ public class AdminView {
     // 레시피 수정 기능
     private static void updateRecipe(AdminController ac, Scanner sc) throws SQLException {
 
-        System.out.print("수정할 레시피의 이름을 입력하세요: ");
+        System.out.print("🧻 수정할 레시피의 이름을 입력하세요: ");
         String oldName = sc.nextLine();
         AdminDTO recipe = ac.getRecipeByName(oldName);
 
         if (recipe == null) {
-            System.out.println("해당 레시피가 존재하지 않습니다.");
+            System.out.println("❌ 해당 레시피가 존재하지 않습니다.");
             return;
         }
 
-        System.out.println("수정할 항목을 선택하세요.");
+        System.out.println("🧻 수정할 항목을 선택하세요.");
         System.out.println("1. 레시피 이름");
         System.out.println("2. 재료");
         System.out.println("3. 조리 방법");
@@ -112,39 +112,39 @@ public class AdminView {
 
         switch (choice) {
             case 1:
-                System.out.print("새 레시피 이름을 입력하세요: ");
+                System.out.print("🔺 새 레시피 이름을 입력하세요: ");
                 recipe.setMenuName(sc.nextLine());
                 break;
             case 2:
-                System.out.print("새 재료를 입력하세요: ");
+                System.out.print("🔺 새 재료를 입력하세요: ");
                 recipe.setIngredients(sc.nextLine());
                 break;
             case 3:
-                System.out.print("새 조리 방법을 입력하세요: ");
+                System.out.print("🔺 새 조리 방법을 입력하세요: ");
                 recipe.setMethod(sc.nextLine());
                 break;
             case 4:
-                System.out.print("새 조리 시간을 입력하세요 (분): ");
+                System.out.print("🔺 새 조리 시간을 입력하세요 (분): ");
                 recipe.setTime(sc.nextLine());
                 break;
             case 5:
-                System.out.print("새 난이도를 입력하세요 (1~5): ");
+                System.out.print("🔺 새 난이도를 입력하세요 (1~5): ");
                 recipe.setLevel(sc.nextInt());
                 break;
             default:
-                System.out.println("잘못된 선택입니다.");
+                System.out.println("❌ 잘못된 선택입니다. 다시 시도해주세요.");
                 return;
         }
 
         ac.updateRecipe(recipe, oldName);
-        System.out.println("수정된 레시피:");
+        System.out.println("❌ 잘못된 선택입니다. 다시 시도해주세요.");
         System.out.println(recipe);
     }
 
     // 레시피 삭제 기능
     private static void deleteRecipe(AdminController ac, Scanner sc) {
 
-        System.out.print("삭제할 레시피의 이름을 입력하세요: ");
+        System.out.print("➖ 삭제할 레시피의 이름을 입력하세요: ");
         String name = sc.nextLine();
         ac.deleteRecipe(name);
     }

@@ -63,7 +63,7 @@ public class AdminService {
 
             AdminDTO existingRecipe = ar.selectRecipeByName(con, oldName);
             if (existingRecipe == null) {
-                return -1;  // 존재하지 않음
+                return -1;
             }
 
             int result = ar.updateRecipe(con, recipe, oldName);
