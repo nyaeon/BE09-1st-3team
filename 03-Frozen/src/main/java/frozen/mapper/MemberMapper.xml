@@ -21,7 +21,7 @@
     <!-- 회원 정보 조회 -->
     <entry key="getMemberInfo">
         <![CDATA[
-        SELECT id, name, nickname, birth, gender
+        SELECT *
         FROM members
         WHERE id = ?
         ]]>
@@ -31,7 +31,7 @@
     <entry key="updateMemberInfo">
         <![CDATA[
         UPDATE members
-        SET name = ?, nickname = ?, birth = ?, gender = ?
+        SET id = ?, pwd = ?, nickname = ?, birth = ?, gender = ?
         WHERE id = ?
         ]]>
     </entry>
