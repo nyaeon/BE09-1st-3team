@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Member SQL Queries</comment>
+
+    <!-- 회원가입 -->
+    <entry key="insertMember">
+        <![CDATA[
+        INSERT INTO members (id, pwd, name, nickname, birth, gender, admin)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ]]>
+    </entry>
+
+    <!-- 로그인 -->
+    <entry key="login">
+        <![CDATA[
+        SELECT * FROM members WHERE id = ? AND pwd = ?
+        ]]>
+    </entry>
+
+    <!-- 회원 정보 조회 -->
+    <entry key="getMemberInfo">
+        <![CDATA[
+        SELECT id, name, nickname, birth, gender
+        FROM members
+        WHERE id = ?
+        ]]>
+    </entry>
+
+    <!-- 회원 정보 수정 -->
+    <entry key="updateMemberInfo">
+        <![CDATA[
+        UPDATE members
+        SET name = ?, nickname = ?, birth = ?, gender = ?
+        WHERE id = ?
+        ]]>
+    </entry>
+
+    <!-- 회원 정보 삭제 -->
+    <entry key="deleteMemberInfo">
+        <![CDATA[
+        DELETE FROM members
+        WHERE id = ?
+        ]]>
+    </entry>
+
+    <!-- 관심 레시피 확인 -->
+    <entry key="getFavoriteRecipes">
+        <![CDATA[
+        SELECT recipe_name
+        FROM save_recipe
+        WHERE memNo = (
+            SELECT memNo FROM members WHERE id = ?
+        )
+        ]]>
+    </entry>
+
+    <!-- 관심 레시피 삭제 -->
+    <entry key="deleteFavoriteRecipe">
+        <![CDATA[
+        DELETE FROM save_recipe
+        WHERE memNo = (
+            SELECT memNo FROM members WHERE id = ?
+        ) AND name = ?
+        ]]>
+    </entry>
+
+</properties>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment/>
+    <entry key="searchIngredients">
+        SELECT *
+        FROM ingredients
+    </entry>
+    <entry key="searchExistIngredients">
+        SELECT *
+        FROM ingredients
+        WHERE name = ?
+    </entry>
+    <entry key="searchRecommendRecipe">
+        SELECT *
+        FROM recipe
+        WHERE ingredients LIKE ? AND ingredients LIKE ? AND ingredients LIKE ?
+        ORDER BY RAND()
+        LIMIT 1;
+    </entry>
+</properties>
