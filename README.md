@@ -82,6 +82,9 @@
   - 사용자가 유통기한 초과로 폐기된 재료를 확인하거나, 한 달 간 섭취된 재료의 소비 패턴을 조회할 수 있습니다. 이를 통해 재료의 소비 패턴을 분석하고, 낭비를 줄이기 위한 알림을 받을 수 있습니다.
 
 # ERD
+- 유스케이스 다이어그램
+![image](https://github.com/user-attachments/assets/c5d4fab4-ae5b-4e67-b3d2-1b0021caa712)
+
 - 논리 모델
 ![ERD1](https://github.com/user-attachments/assets/a50adeb5-9609-4517-a48e-9c1dbbed3435)
 - 물리 모델
