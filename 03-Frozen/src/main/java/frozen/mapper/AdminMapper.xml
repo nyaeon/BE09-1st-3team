@@ -17,4 +17,9 @@
             ?
         )
     </entry>
+
+    <entry key="selectRecipe">
+        SELECT *
+        FROM recipe
+    </entry>
 </properties>

@@ -6,7 +6,10 @@ import java.sql.Connection;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import static frozen.common.JDBCTemplate.close;
@@ -47,5 +50,37 @@ public class AdminRepository {
         }
 
         return result;
+    }
+
+
+    public List<AdminDTO> selectAllRecipes(Connection con) {
+
+        List<AdminDTO> list = new ArrayList<>();
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        String query = prop.getProperty("selectRecipe");
+
+        try {
+            pstmt = con.prepareStatement(query);
+            rset = pstmt.executeQuery();
+
+            while (rset.next()) {
+                AdminDTO recipe = new AdminDTO();
+                recipe.setMenuName(rset.getString("name"));
+                recipe.setIngredients(rset.getString("ingredients"));
+                recipe.setMethod(rset.getString("method"));
+                recipe.setTime(rset.getString("time"));
+                recipe.setLevel(rset.getInt("level"));
+                list.add(recipe);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(rset);
+            close(pstmt);
+        }
+
+        return list;
     }
 }

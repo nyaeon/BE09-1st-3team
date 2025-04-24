@@ -33,8 +33,10 @@ public class AdminView {
                 case 1:
                     AdminDTO recipe = getRecipeFromUser();
                     ac.insertRecipe(recipe); break;
-//                case 2: ac.selectRecipe();
-//                case 3: ac.updateRecipe();
+                case 2:
+                    viewAllRecipes(ac); break;
+                case 3:
+                    updateRecipe(ac); break;
 //                case 4: ac.deleteRecipe();
                 case 9: return;
                 default:
@@ -45,6 +47,8 @@ public class AdminView {
 
 
     }
+
+
 
     private static AdminDTO getRecipeFromUser() {
 
@@ -72,8 +76,19 @@ public class AdminView {
         recipe.setLevel(level);
 
         return recipe;
+    }
+
+    private static void viewAllRecipes(AdminController ac) {
+        ac.selectAllRecipes();
+    }
+
+
+    private static void updateRecipe(AdminController ac) {
 
     }
+
+
+
 
 }
 

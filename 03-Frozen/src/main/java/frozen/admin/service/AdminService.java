@@ -4,6 +4,7 @@ import frozen.admin.dto.AdminDTO;
 import frozen.admin.repository.AdminRepository;
 
 import java.sql.Connection;
+import java.util.List;
 
 import static frozen.common.JDBCTemplate.*;
 
@@ -32,12 +33,20 @@ public class AdminService {
 
     }
 
-    public void selectRecipe() {
-    }
+    public List<AdminDTO> selectAllRecipes() {
 
+        Connection con = getConnection();
+
+        List<AdminDTO> recipes = ar.selectAllRecipes(con);
+
+        close(con);
+
+        return recipes;
+    }
     public void updateRecipe() {
     }
 
     public void deleteRecipe() {
     }
+
 }

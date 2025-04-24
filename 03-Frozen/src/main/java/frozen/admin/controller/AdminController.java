@@ -3,6 +3,9 @@ package frozen.admin.controller;
 import frozen.admin.dto.AdminDTO;
 import frozen.admin.service.AdminService;
 
+import java.util.List;
+import java.util.Scanner;
+
 public class AdminController {
 
     private AdminService as;
@@ -26,4 +29,21 @@ public class AdminController {
         }
 
     }
+
+
+    public void selectAllRecipes() {
+
+        List<AdminDTO> list = as.selectAllRecipes();
+        System.out.println("📖 등록된 레시피 목록:");
+
+        int count = 1;
+        for (AdminDTO recipe : list) {
+            System.out.println("🍽️ 메뉴 " + count++ + "번");
+            System.out.println(recipe);
+            System.out.println();
+        }
+    }
+
+
+
 }

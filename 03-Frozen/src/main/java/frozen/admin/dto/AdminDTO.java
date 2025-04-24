@@ -56,4 +56,14 @@ public class AdminDTO {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    @Override
+    public String toString() {
+        return "📋 메뉴 이름: " + menuName +
+                "\n🌿 재료: " + ingredients +
+                "\n📖 ======= 조리 방법 ========\n" + method +
+                "\n⏱️ 조리 시간: " + time +
+                "\n⭐ 난이도: ★" + level +
+                "\n------------------------------------------------------";
+    }
 }
