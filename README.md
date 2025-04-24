@@ -86,7 +86,6 @@ Java 개발:
 # ERD
 - 논리 모델
 ![ERD1](https://github.com/user-attachments/assets/a50adeb5-9609-4517-a48e-9c1dbbed3435)
-
 - 물리 모델
 ![ERD2](https://github.com/user-attachments/assets/ac03b371-dbda-4a37-9c18-6ce2574f25f8)
 
@@ -116,8 +115,8 @@ Java 개발:
   - 사용자의 역할 기반 권한 제어
 
 - **구성 요소**:
-  - `.java`: 사용자 계정 관련 비즈니스 로직 처리
-  - `.java`: 사용자 데이터 접근
+  - `MemberService.java`: 사용자 계정 관련 비즈니스 로직 처리
+  - `MemberRepository.java`: 사용자 데이터 접근
   - `.java`: 인증 및 권한 관리
   - `.java`: 사용자 역할 관리
 
