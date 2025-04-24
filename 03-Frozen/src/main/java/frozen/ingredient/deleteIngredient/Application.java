@@ -1,6 +1,5 @@
 package frozen.ingredient.deleteIngredient;
 
-import frozen.ingredientManagement.Management;
 import frozen.ingredientManagement.managemenntService;
 
 import java.time.LocalDate;

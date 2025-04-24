@@ -68,6 +68,7 @@ public class recController {
             System.out.printf("%s\n\n요리 소요 시간: %s\n난이도: ", result.getMethod(), result.getTime());
             for (int i = 0; i < result.getLevel(); i++) System.out.print("⭐");
         }
+        System.out.println("\n");
 
 
     }
