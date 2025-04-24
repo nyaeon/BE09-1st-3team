@@ -4,6 +4,7 @@ package frozen.ingredient;
 
 
 import java.sql.Connection;
+import java.time.LocalDate;
 
 import static frozen.common.JDBCTemplate.*;
 
@@ -40,7 +41,7 @@ public class ingredientService {
 
     public void modifyIngredient(Ingredient modIng) {
         Connection con = getConnection();
-        int result = ingredientRepository.updateMenu(con, modIng);
+        int result = ingredientRepository.updateIngredient(con, modIng);
 
         if(result > 0) {
             commit(con);
@@ -50,4 +51,19 @@ public class ingredientService {
 
         close(con);
     }
+
+    public Ingredient removeIngredient(String name, LocalDate date) {
+        Connection con = getConnection();
+        Ingredient ing = ingredientRepository.deleteIngredient(con, name, date);
+        int result = ing.getAmount();
+        if(result > 0) {
+            commit(con);
+            System.out.println("성공적으로 삭제 되었습니다.");
+        } else {
+            rollback(con);
+        }
+        close(con);
+        return ing;
+    }
+
 }

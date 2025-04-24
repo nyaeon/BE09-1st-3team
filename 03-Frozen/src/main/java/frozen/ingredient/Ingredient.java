@@ -8,15 +8,22 @@ public class Ingredient {
     private LocalDate deadLine;
     private String location;
 
+
+
+    public Ingredient() {
+
+    }
+
+    public Ingredient(String ingredientName,int amount) {
+        this.ingredientName = ingredientName;
+        this.amount = amount;
+    }
+
     public Ingredient(String ingredientName, int amount, LocalDate deadLine, String location) {
         this.ingredientName = ingredientName;
         this.amount = amount;
         this.deadLine = deadLine;
         this.location = location;
-    }
-
-    public Ingredient() {
-
     }
 
     public String getIngredientName() {

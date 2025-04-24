@@ -3,26 +3,13 @@
 <properties>
     <comment/>
     <entry key="insertIngredient">
-        INSERT
-            INTO ingredients
-        (
-            name
-        ,   amount
-        ,   expDate
-        ,   location
-        )
-        VALUES
-        (
-          ?
-        , ?
-        , ?
-        , ?
-        )
+        INSERT INTO ingredients  (name ,amount ,expDate ,location)
+        VALUES (?,?,?,? )
     </entry>
     <entry key="updateIngredient">
         UPDATE ingredients
-            SET name = ?
-             ,  amount = ?
+            SET
+                amount = ?
              ,  expDate = ?
              ,  location = ?
             WHERE name = ?
@@ -30,7 +17,7 @@
     <entry key="deleteIngredient">
         DELETE
         FROM ingredients
-        WHERE name = ?
+        WHERE name = ? AND expDate = ?
     </entry>
     <entry key="checkIngredient">
         SELECT
