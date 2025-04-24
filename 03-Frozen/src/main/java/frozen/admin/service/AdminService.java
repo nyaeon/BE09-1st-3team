@@ -30,7 +30,6 @@ public class AdminService {
         close(con);
 
         return result;
-
     }
 
     public List<AdminDTO> selectAllRecipes() {
