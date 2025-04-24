@@ -60,11 +60,6 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return "Ingredient{" +
-                "ingredientName='" + ingredientName + '\'' +
-                ", amount=" + amount +
-                ", deadLine=" + deadLine +
-                ", location='" + location + '\'' +
-                '}';
+        return "["+" 재료명 :" + ingredientName + " 재료 수량 : " + amount +  " 유통 기한 " + deadLine + " 보관 위치 " + location+ "]";
     }
 }

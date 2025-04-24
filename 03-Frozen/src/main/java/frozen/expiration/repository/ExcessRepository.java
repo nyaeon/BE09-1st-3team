@@ -34,7 +34,7 @@ public class ExcessRepository {
         try {
             pstmt = con.prepareStatement(sql);
             for (int i = 0; i < 100; i++){
-                LocalDate targetDate = ing.getExpDate().plusDays(i);
+                LocalDate targetDate = ing.getExpDate().minusDays(i + 1);
                 pstmt.setDate(1, Date.valueOf(targetDate));
                 rs = pstmt.executeQuery();
                 while (rs.next()) {
