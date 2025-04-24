@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c73e7c2d-0574-426e-a1f5-026eefd39edf)# 프로젝트 기획서
+# 프로젝트 기획서
 ---
 # 개요
 - 프로젝트명 : 냉장GO - 식재료 관리와 유통기한 알림 시스템
@@ -275,9 +275,8 @@
 ![image](https://github.com/user-attachments/assets/17025f7a-1104-4612-a747-55140a9454e3)
 
 ### 마이페이지 기능
-![image](https://github.com/user-attachments/assets/06d913d9-ac34-4671-ba77-0d90baa2e1b5)
-![image](https://github.com/user-attachments/assets/a425bc12-c98c-44cb-8396-df7dab1d2fd5)
-![image](https://github.com/user-attachments/assets/415478bb-96e1-4219-8cae-ce1e279fd8fd)
+![image](https://github.com/user-attachments/assets/68193d04-3cd3-44dc-8453-d4f62e218e9e)
+
 
 ### 식재료 관리 기능
 
@@ -296,10 +295,9 @@
 ![image](https://github.com/user-attachments/assets/09b7353a-21e0-4447-bc98-edff73d4c0ad)
 
 ### 유통기한 확인 기능
-
-![image](https://github.com/user-attachments/assets/a9cd3f5a-b0ae-476a-9e89-2e9646fb91fa)
-![image](https://github.com/user-attachments/assets/c0062996-0641-4b87-b837-55e17829baf1)
-![image](https://github.com/user-attachments/assets/b5f7bded-358d-44a9-a3bb-61453ed10cb4)
+![image](https://github.com/user-attachments/assets/0c73134b-4584-4d1a-8aba-2a6debdc1a6d)
+![image](https://github.com/user-attachments/assets/bd5b9daf-5dc1-488a-bcfd-267c5edc7750)
+![image](https://github.com/user-attachments/assets/c4eb1fd4-1771-4bc9-8388-581118e69935)
 
 
 
