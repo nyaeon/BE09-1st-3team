@@ -2,7 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment/>
-    <entry key="">
-
+    <entry key="searchExpIngredients">
+        SELECT *
+            FROM ingredients
+            WHERE expDate = ?
     </entry>
 </properties>
