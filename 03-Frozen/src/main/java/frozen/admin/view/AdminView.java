@@ -4,11 +4,12 @@ import frozen.admin.controller.AdminController;
 import frozen.admin.dto.AdminDTO;
 import frozen.admin.service.AdminService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AdminView {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         AdminController ac = new AdminController();
 
@@ -29,14 +30,16 @@ public class AdminView {
 
             System.out.print("메뉴 선택: ");
             int input = sc.nextInt();
+            sc.nextLine();
+
             switch (input) {
                 case 1:
-                    AdminDTO recipe = getRecipeFromUser();
+                    AdminDTO recipe = getRecipeFromUser(sc);
                     ac.insertRecipe(recipe); break;
                 case 2:
                     viewAllRecipes(ac); break;
                 case 3:
-                    updateRecipe(ac); break;
+                    updateRecipe(ac, sc); break;
 //                case 4: ac.deleteRecipe();
                 case 9: return;
                 default:
@@ -49,10 +52,9 @@ public class AdminView {
     }
 
 
+    // 사용자의 레시피 입력을 받는 메소드
+    private static AdminDTO getRecipeFromUser(Scanner sc) {
 
-    private static AdminDTO getRecipeFromUser() {
-
-        Scanner sc = new Scanner(System.in);
         System.out.print("메뉴 이름: ");
         String name = sc.nextLine();
 
@@ -67,6 +69,7 @@ public class AdminView {
 
         System.out.print("난이도(1~5): ");
         int level = sc.nextInt();
+        sc.nextLine();
 
         AdminDTO recipe = new AdminDTO();
         recipe.setMenuName(name);
@@ -78,17 +81,63 @@ public class AdminView {
         return recipe;
     }
 
+    // 등록된 모든 레시피를 조회
     private static void viewAllRecipes(AdminController ac) {
         ac.selectAllRecipes();
     }
 
 
-    private static void updateRecipe(AdminController ac) {
+    // 레시피 수정 기능
+    private static void updateRecipe(AdminController ac, Scanner sc) throws SQLException {
 
+        System.out.print("수정할 레시피의 이름을 입력하세요: ");
+        String oldName = sc.nextLine();
+        AdminDTO recipe = ac.getRecipeByName(oldName);
+
+        if (recipe == null) {
+            System.out.println("해당 레시피가 존재하지 않습니다.");
+            return;
+        }
+
+        System.out.println("수정할 항목을 선택하세요.");
+        System.out.println("1. 레시피 이름");
+        System.out.println("2. 재료");
+        System.out.println("3. 조리 방법");
+        System.out.println("4. 조리 시간");
+        System.out.println("5. 난이도");
+        System.out.print("선택 >> ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.print("새 레시피 이름을 입력하세요: ");
+                recipe.setMenuName(sc.nextLine());
+                break;
+            case 2:
+                System.out.print("새 재료를 입력하세요: ");
+                recipe.setIngredients(sc.nextLine());
+                break;
+            case 3:
+                System.out.print("새 조리 방법을 입력하세요: ");
+                recipe.setMethod(sc.nextLine());
+                break;
+            case 4:
+                System.out.print("새 조리 시간을 입력하세요 (분): ");
+                recipe.setTime(sc.nextLine());
+                break;
+            case 5:
+                System.out.print("새 난이도를 입력하세요 (1~5): ");
+                recipe.setLevel(sc.nextInt());
+                break;
+            default:
+                System.out.println("잘못된 선택입니다.");
+                return;
+        }
+
+        ac.updateRecipe(recipe, oldName);
+        System.out.println("수정된 레시피:");
+        System.out.println(recipe);
     }
 
-
-
-
 }
-

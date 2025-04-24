@@ -19,7 +19,31 @@
     </entry>
 
     <entry key="selectRecipe">
-        SELECT *
+        SELECT
+            name,
+            ingredients,
+            method,
+            time,
+            level
         FROM recipe
     </entry>
+
+    <entry key="selectRecipeByName">
+        <![CDATA[
+           SELECT * FROM recipe WHERE TRIM(LOWER(name)) = TRIM(LOWER(?))
+    ]]>
+    </entry>
+
+    <entry key="updateRecipe">
+        UPDATE recipe
+        SET
+        name = ?,
+        ingredients = ?,
+        method = ?,
+        time = ?,
+        level = ?
+        WHERE name = ?
+    </entry>
+
+
 </properties>

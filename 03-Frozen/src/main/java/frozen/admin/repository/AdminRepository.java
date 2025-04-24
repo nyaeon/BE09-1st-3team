@@ -16,6 +16,8 @@ import static frozen.common.JDBCTemplate.close;
 
 public class AdminRepository {
 
+    private List<AdminDTO> recipes;
+
     private Properties prop;
 
     public AdminRepository(){
@@ -83,4 +85,61 @@ public class AdminRepository {
 
         return list;
     }
+
+    public AdminDTO selectRecipeByName(Connection con, String name) {
+        AdminDTO recipe = null;
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        String query = prop.getProperty("selectRecipeByName");
+
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, name);
+            rset = pstmt.executeQuery();
+
+            if (rset.next()) {
+                recipe = new AdminDTO();
+                recipe.setMenuName(rset.getString("name"));
+                recipe.setIngredients(rset.getString("ingredients"));
+                recipe.setMethod(rset.getString("method"));
+                recipe.setTime(rset.getString("time"));
+                recipe.setLevel(rset.getInt("level"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(rset);
+            close(pstmt);
+        }
+
+        return recipe;
+    }
+
+    public int updateRecipe(Connection con, AdminDTO recipe, String oldName) {
+        int result = 0;
+        PreparedStatement pstmt = null;
+        String query = prop.getProperty("updateRecipe");
+
+        try {
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, recipe.getMenuName());       // 새 이름
+            pstmt.setString(2, recipe.getIngredients());
+            pstmt.setString(3, recipe.getMethod());
+            pstmt.setString(4, recipe.getTime());
+            pstmt.setInt(5, recipe.getLevel());
+            pstmt.setString(6, oldName);                    // WHERE 절에 기존 이름 사용
+
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+
+        return result;
+
+    }
+
+
 }

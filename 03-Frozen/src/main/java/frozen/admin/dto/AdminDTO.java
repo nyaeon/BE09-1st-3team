@@ -9,6 +9,7 @@ public class AdminDTO {
     private String time;
     private int level;
 
+
     public AdminDTO() {
         this.menuName = menuName;
         this.ingredients = ingredients;

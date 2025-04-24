@@ -4,6 +4,7 @@ import frozen.admin.dto.AdminDTO;
 import frozen.admin.repository.AdminRepository;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import static frozen.common.JDBCTemplate.*;
@@ -42,10 +43,44 @@ public class AdminService {
 
         return recipes;
     }
-    public void updateRecipe() {
+
+    public AdminDTO getRecipeByName(String name) {
+        try (Connection con = getConnection()) {
+            return ar.selectRecipeByName(con, name);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            System.out.println("Error retrieving recipe by name: " + name);
+            return null;
+        }
     }
 
-    public void deleteRecipe() {
-    }
+    public int updateRecipe(AdminDTO recipe, String oldName)  {
+        Connection con = null;
+        try {
+            con = getConnection();
+            con.setAutoCommit(false);
 
+            AdminDTO existingRecipe = ar.selectRecipeByName(con, oldName);
+            if (existingRecipe == null) {
+                return -1;  // 존재하지 않음
+            }
+
+            int result = ar.updateRecipe(con, recipe, oldName);
+            if (result > 0) {
+                commit(con);
+            } else {
+                rollback(con);
+            }
+
+            return result;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            rollback(con);
+            return 0;
+        } finally {
+            close(con);
+        }
+    }
 }
