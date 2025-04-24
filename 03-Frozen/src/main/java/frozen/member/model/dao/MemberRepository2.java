@@ -6,17 +6,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import static frozen.common.JDBCTemplate.close;
 
-public class MemberRepository {
+public class MemberRepository2 {
 
     private final Properties prop;
 
-    public MemberRepository() {
+    public MemberRepository2() {
         prop = new Properties();
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/frozen/mapper/MemberMapper.xml"));
@@ -51,8 +49,6 @@ public class MemberRepository {
         }
     }
 
-
-    // 로그인
     public boolean login(Connection con, String id, String pwd) {
         PreparedStatement pstmt = null;
         ResultSet rset = null;
@@ -74,8 +70,36 @@ public class MemberRepository {
         }
     }
 
-    // 회원 정보 조회
-    public Member getMemberInfo(Connection con, String id) {
+    public boolean isAdmin(Connection con, String id, String password) {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = prop.getProperty("login");
+        boolean result = false;
+
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
+            pstmt.setString(2, password);
+
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                Member memResult = new Member();
+                memResult.setAdmin(rs.getBoolean("admin"));
+                if (memResult.isAdmin()) {
+                    result = true;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close(rs);
+            close(pstmt);
+        }
+        return result;
+    }
+
+    public Member getMemberInfo(Connection con, Member mem) {
         PreparedStatement pstmt = null;
         ResultSet rset = null;
         String sql = prop.getProperty("getMemberInfo");
@@ -83,13 +107,13 @@ public class MemberRepository {
 
         try {
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, id);  // 사용자 ID
-
+            pstmt.setString(1, mem.getId());  // 사용자 ID
             rset = pstmt.executeQuery();
             if (rset.next()) {
                 member = new Member();
                 member.setId(rset.getString("id"));
                 member.setPwd(rset.getString("pwd"));
+                member.setName(rset.getString("name"));
                 member.setNickname(rset.getString("nickname"));
                 member.setBirth(rset.getDate("birth").toLocalDate());
                 member.setGender(rset.getString("gender"));
@@ -109,7 +133,7 @@ public class MemberRepository {
     public boolean updateMember(Connection con, String userId, String newId, String newPwd, String newNickname, LocalDate newBirth, String newGender) {
         PreparedStatement pstmt = null;
         String sql = prop.getProperty("updateMember");
-
+        System.out.println(sql);
         try {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, newId);       // 새 아이디
@@ -118,6 +142,7 @@ public class MemberRepository {
             pstmt.setDate(4, Date.valueOf(newBirth));  // 새 생년월일
             pstmt.setString(5, newGender);   // 새 성별
             pstmt.setString(6, userId);      // 수정할 사용자 ID
+            System.out.println(pstmt.toString());
 
             int result = pstmt.executeUpdate();  // 쿼리 실행
 
@@ -129,70 +154,4 @@ public class MemberRepository {
             close(pstmt);
         }
     }
-    // 회원 정보 삭제
-    public boolean deleteMember (Connection con, String userId){
-        PreparedStatement pstmt = null;
-        String sql = prop.getProperty("deleteMember");
-
-        try {
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, userId);  // 삭제할 사용자 ID
-
-            int result = pstmt.executeUpdate();  // 쿼리 실행
-
-            return result > 0;  // 성공 시 true 반환
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;  // 실패 시 false 반환
-        } finally {
-            close(pstmt);
-        }
-    }
-
-    // 관심 레시피 확인
-    public List<String> getFavoriteRecipes(Connection con, String userId) {
-        PreparedStatement pstmt = null;
-        ResultSet rset = null;
-        String sql = prop.getProperty("getFavoriteRecipes");
-
-        List<String> recipes = new ArrayList<>();
-        try {
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, userId);  // 사용자 ID
-
-            rset = pstmt.executeQuery();
-            while (rset.next()) {
-                recipes.add(rset.getString("recipe_name"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            close(pstmt);
-            close(rset);
-        }
-
-        return recipes;
-    }
-
-    // 관심 레시피 삭제
-    public boolean deleteFavoriteRecipe(Connection con, String userId, String recipeName) {
-        PreparedStatement pstmt = null;
-        String sql = prop.getProperty("deleteFavoriteRecipe");
-
-        try {
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, userId);  // 사용자 ID
-            pstmt.setString(2, recipeName);  // 레시피 이름
-
-            int result = pstmt.executeUpdate();  // 쿼리 실행
-
-            return result > 0;  // 성공 시 true 반환
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;  // 실패 시 false 반환
-        } finally {
-            close(pstmt);
-        }
-    }
-
 }

@@ -20,8 +20,7 @@ public class ExcessRepository {
         prop = new Properties();
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/frozen/mapper/ExpireMapper.xml"));
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -12,22 +12,12 @@ public class MemberController {
 
     private static String userId = null;
 
-    public static void main(String[] args) {
+    public static void memberRun() {
         MemberService memberService = new MemberService(new MemberRepository());
         Scanner sc = new Scanner(System.in);
 
         boolean isLoggedIn = false;  // 로그인 상태 추적
         String userId = null;  // 로그인된 사용자 ID
-
-        // 초기 메뉴
-        String initialMenu = """
-                ============== 회원 관리 ==============
-                1. 회원가입
-                2. 로그인
-                0. 종료
-                ==================================
-                메뉴를 선택해주세요 : 
-               """;
 
         // 로그인 후 메뉴
         String loggedInMenu = """
@@ -39,19 +29,18 @@ public class MemberController {
                 5. 관심 레시피 삭제
                 0. 로그아웃
                 ==================================
-                메뉴를 선택해주세요 : 
-               """;
+                메뉴를 선택해주세요 : """;
 
         // main 메서드의 로그인 후 마이페이지로 이동하는 부분
         while (true) {
             if (!isLoggedIn) {
-                System.out.println(initialMenu);
+                //System.out.println(initialMenu);
                 int input = sc.nextInt();
                 sc.nextLine(); // 버퍼 제거
 
                 switch (input) {
                     case 1: // 회원가입
-                        signUp(memberService, sc);
+                        //signUp(memberService, sc);
                         break;
                     case 2: // 로그인
                         isLoggedIn = login(memberService, sc);
@@ -114,7 +103,9 @@ public class MemberController {
      */
 
     // 회원가입
-    private static void signUp(MemberService memberService, Scanner sc) {
+/*    public static void signUp() {
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("회원가입을 시작합니다.");
         System.out.print("아이디를 입력하세요: ");
         String id = sc.nextLine();
@@ -133,13 +124,14 @@ public class MemberController {
         boolean isAdmin = sc.nextLine().equalsIgnoreCase("Y");
 
         Member member = new Member(id, pwd, name, nickname, birth, gender, isAdmin);
+        MemberService memberService = new MemberService();
         boolean isSignedUp = memberService.signUp(member);
         if (isSignedUp) {
             System.out.println("회원가입 성공!");
         } else {
             System.out.println("회원가입 실패!");
         }
-    }
+    }*/
 
 // 회원은 서버에 저장되어 있는 정보를 가지고 로그인을 한다.
 /*
@@ -184,7 +176,6 @@ public class MemberController {
 2) 사용자의 정보가 마이페이지에 출력된다.
 */
     // 회원 정보 조회
-// 회원 정보 조회
     private static void viewMemberInfo(MemberService memberService, Scanner sc, String userId) {
         // 서비스에서 사용자 정보 가져오기
         Member member = memberService.getMemberInfo(userId);
