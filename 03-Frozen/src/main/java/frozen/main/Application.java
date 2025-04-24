@@ -1,8 +1,7 @@
 package frozen.main;
 
 import frozen.expiration.controller.expController;
-import frozen.member.controller.MemberController;
-import frozen.member.controller.MemberController2;
+import frozen.ingredient.controller.ingCon;
 import frozen.recommendation.controller.recController;
 
 import java.util.Scanner;
@@ -13,7 +12,6 @@ public class Application {
 
     public static expController expCon = new expController();
     public static recController recCon = new recController();
-
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -67,7 +65,7 @@ public class Application {
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1: break;
+                case 1: ingCon.ingredientManagement();break;
                 case 2: expCon.expireRun(); break;
                 case 3: recCon.recommendController(); break;
                 case 4: break;
@@ -100,7 +98,7 @@ public class Application {
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1: break;
+                case 1: ingCon.ingredientManagement();break;
                 case 2: expCon.expireRun(); break;
                 case 3: recCon.recommendController(); break;
                 case 4: break;
