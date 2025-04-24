@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/4fc546df-82f4-4fff-9398-c2a95753f39b)# 프로젝트 기획서
+# 프로젝트 기획서
 ---
 # 개요
 - 프로젝트명 : 냉장GO - 식재료 관리와 유통기한 알림 시스템
