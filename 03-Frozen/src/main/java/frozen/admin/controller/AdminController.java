@@ -36,7 +36,7 @@ public class AdminController {
 
         int count = 1;
         for (AdminDTO recipe : list) {
-            System.out.println("🍽️ 메뉴 " + count++ + "번");
+            System.out.println("🍽️ 레시피 " + count++ + "번");
             System.out.println(recipe);
             System.out.println();
         }
