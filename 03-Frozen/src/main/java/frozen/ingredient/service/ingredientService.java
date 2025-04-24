@@ -1,7 +1,10 @@
 
-package frozen.ingredient;
+package frozen.ingredient.service;
 
 
+
+import frozen.ingredient.Ingredient;
+import frozen.ingredient.repository.ingredientRepository;
 
 import java.sql.Connection;
 import java.time.LocalDate;

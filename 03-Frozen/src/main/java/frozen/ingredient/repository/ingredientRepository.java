@@ -1,7 +1,9 @@
-package frozen.ingredient;
+package frozen.ingredient.repository;
 
 
 
+
+import frozen.ingredient.Ingredient;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +12,6 @@ import java.time.LocalDate;
 import java.util.Properties;
 
 import static frozen.common.JDBCTemplate.*;
-import static frozen.common.JDBCTemplate.rollback;
 
 public class ingredientRepository {
     private final Properties prop;

@@ -1,13 +1,15 @@
-package frozen.ingredient;
+package frozen.ingredient.controller;
 
 
+import frozen.ingredient.Ingredient;
+import frozen.ingredient.service.ingredientService;
 import frozen.ingredientManagement.Menagement;
 import frozen.ingredientManagement.managemenntService;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Application {
-    public static void main(String[] args) {
+public class ingCon {
+    public static void ingredientManagement() {
         ingredientService ingredient = new ingredientService();
         managemenntService menegement = new managemenntService();
         Scanner sc = new Scanner(System.in);
@@ -41,7 +43,7 @@ public class Application {
                     break;
                 case 5:
                     System.out.println("식재료 관리 메뉴를 종료합니다.");
-                    break;
+                    return;
                 default:
                     System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요. ");
             }
