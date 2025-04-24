@@ -1,4 +1,4 @@
-# 프로젝트 기획서
+![image](https://github.com/user-attachments/assets/4fc546df-82f4-4fff-9398-c2a95753f39b)# 프로젝트 기획서
 ---
 # 개요
 - 프로젝트명 : 냉장GO - 식재료 관리와 유통기한 알림 시스템
@@ -269,7 +269,27 @@
 
 
 # 스토리보드
-화면 명세서와 스토리 보드
+로그인 기능
+![image](https://github.com/user-attachments/assets/629d03f6-2b07-4b73-8388-75078593e8d0)
+![image](https://github.com/user-attachments/assets/17025f7a-1104-4612-a747-55140a9454e3)
+
+식재료 관리 기능
+![image](https://github.com/user-attachments/assets/c24514e2-c390-451f-af28-392b318127c8)
+![image](https://github.com/user-attachments/assets/7fc606e8-ef97-40cd-9f17-f47e3c9a8394)
+![image](https://github.com/user-attachments/assets/dbdaa230-aea9-4a11-9c16-f9d43a990fe8)
+![image](https://github.com/user-attachments/assets/1fc5cc44-90f1-435a-adc2-244a327e5282)
+![image](https://github.com/user-attachments/assets/ee46b84d-bac5-4b33-aff0-004b487e5ff6)
+
+관리자 업무 기능
+![image](https://github.com/user-attachments/assets/f27f3868-34b5-480c-be43-de5cc3386cf7)
+![image](https://github.com/user-attachments/assets/4e015b19-a9ae-489c-aa64-f6869520c9f4)
+![image](https://github.com/user-attachments/assets/49917974-ebd0-4833-8317-dec6649f16cd)
+![image](https://github.com/user-attachments/assets/deaa6782-3e5a-4fc5-bd4d-660134109e9d)
+![image](https://github.com/user-attachments/assets/09b7353a-21e0-4447-bc98-edff73d4c0ad)
+
+
+
+
 
 # 기술스택
 - **프로그래밍 언어** : 
