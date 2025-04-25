@@ -1,6 +1,6 @@
 package frozen.main;
 
-import frozen.admin.view.AdminView;
+import frozen.admin.controller.AdminController;
 import frozen.expiration.controller.expController;
 import frozen.ingredient.controller.ingCon;
 import frozen.recommendation.controller.recController;
@@ -114,7 +114,7 @@ public class Application {
 
     private static void showAdminMenu() {
         try {
-            AdminView.main(new String[0]);  // AdminView에서 main 메서드를 호출
+            AdminController.main(new String[0]);
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("❌ 데이터베이스 오류가 발생했습니다.");
