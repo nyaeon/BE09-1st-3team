@@ -82,6 +82,9 @@
   - 사용자가 유통기한 초과로 폐기된 재료를 확인하거나, 한 달 간 섭취된 재료의 소비 패턴을 조회할 수 있습니다. 이를 통해 재료의 소비 패턴을 분석하고, 낭비를 줄이기 위한 알림을 받을 수 있습니다.
 
 # ERD
+- 유스케이스 다이어그램
+![image](https://github.com/user-attachments/assets/8658dde5-97e5-4f53-aa3f-f39e008b3f0c)
+
 - 논리 모델
 ![ERD1](https://github.com/user-attachments/assets/a50adeb5-9609-4517-a48e-9c1dbbed3435)
 - 물리 모델
@@ -266,7 +269,40 @@
 
 
 # 스토리보드
-화면 명세서와 스토리 보드
+### 로그인 기능
+
+![image](https://github.com/user-attachments/assets/629d03f6-2b07-4b73-8388-75078593e8d0)
+![image](https://github.com/user-attachments/assets/17025f7a-1104-4612-a747-55140a9454e3)
+
+### 마이페이지 기능
+![image](https://github.com/user-attachments/assets/68193d04-3cd3-44dc-8453-d4f62e218e9e)
+
+
+### 식재료 관리 기능
+
+![image](https://github.com/user-attachments/assets/c24514e2-c390-451f-af28-392b318127c8)
+![image](https://github.com/user-attachments/assets/7fc606e8-ef97-40cd-9f17-f47e3c9a8394)
+![image](https://github.com/user-attachments/assets/dbdaa230-aea9-4a11-9c16-f9d43a990fe8)
+![image](https://github.com/user-attachments/assets/1fc5cc44-90f1-435a-adc2-244a327e5282)
+![image](https://github.com/user-attachments/assets/ee46b84d-bac5-4b33-aff0-004b487e5ff6)
+
+### 관리자 업무 기능
+
+![image](https://github.com/user-attachments/assets/f27f3868-34b5-480c-be43-de5cc3386cf7)
+![image](https://github.com/user-attachments/assets/4e015b19-a9ae-489c-aa64-f6869520c9f4)
+![image](https://github.com/user-attachments/assets/49917974-ebd0-4833-8317-dec6649f16cd)
+![image](https://github.com/user-attachments/assets/deaa6782-3e5a-4fc5-bd4d-660134109e9d)
+![image](https://github.com/user-attachments/assets/09b7353a-21e0-4447-bc98-edff73d4c0ad)
+
+### 유통기한 확인 기능
+![image](https://github.com/user-attachments/assets/0c73134b-4584-4d1a-8aba-2a6debdc1a6d)
+![image](https://github.com/user-attachments/assets/bd5b9daf-5dc1-488a-bcfd-267c5edc7750)
+![image](https://github.com/user-attachments/assets/c4eb1fd4-1771-4bc9-8388-581118e69935)
+
+
+
+
+
 
 # 기술스택
 - **프로그래밍 언어** : 
