@@ -1,4 +1,4 @@
-package frozen.member.model.dto;
+package frozen.common.domain;
 
 import java.time.LocalDate;
 
@@ -16,6 +16,14 @@ public class Member {
 
     public Member(String id) {
         this.id = id;
+    }
+
+    public Member(String id, String pwd, String nickname, LocalDate birth, String gender) {
+        this.id = id;
+        this.pwd = pwd;
+        this.nickname = nickname;
+        this.birth = birth;
+        this.gender = gender;
     }
 
     public Member(String id, String pwd, String name, String nickname, LocalDate birth, String gender, boolean isAdmin) {

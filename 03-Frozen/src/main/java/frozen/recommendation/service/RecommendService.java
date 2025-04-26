@@ -7,36 +7,40 @@ import frozen.recommendation.repository.RecommendRepository;
 import java.sql.Connection;
 import java.util.List;
 
-import static frozen.common.JDBCTemplate.close;
-import static frozen.common.JDBCTemplate.getConnection;
+import static frozen.common.JDBCTemplate.*;
 
 public class RecommendService {
 
-    private RecommendRepository rr = new RecommendRepository();
+    private static RecommendRepository rr = new RecommendRepository();
 
-    public List<Ingredients> searchIng(Ingredients ing) {
+    // 등록된 식재료 검색
+    public List<Ingredients> searchIng(String userId) {
 
         Connection con = getConnection();
-        List<Ingredients> result = rr.searchIng(con, ing);
+        List<Ingredients> result = rr.searchIng(con, userId);
         close(con);
         return result;
     }
 
-    public boolean searchExist(Ingredients ing) {
-
-        boolean result = false;
-
-        Connection con = getConnection();
-        result = rr.searchExist(con, ing);
-        close(con);
-
-        return result;
-    }
-
+    // 레시피 검색
     public Recipe searchRecipe(Recipe recipe) {
 
         Connection con = getConnection();
         Recipe result = rr.searchRecipe(con,recipe);
+        close(con);
+        return result;
+    }
+
+    // 관심 레시피 저장
+    public static boolean saveRecipe(String recipeName) {
+
+        Connection con = getConnection();
+        boolean result = rr.saveRecipe(con, recipeName);
+        if (result) {
+            commit(con);
+        } else {
+            rollback(con);
+        }
         close(con);
         return result;
     }

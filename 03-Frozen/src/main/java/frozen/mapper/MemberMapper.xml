@@ -5,64 +5,48 @@
 
     <!-- 회원가입 -->
     <entry key="insertMember">
-        <![CDATA[
         INSERT INTO members (id, pwd, name, nickname, birth, gender, admin)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        ]]>
+            VALUES (?, ?, ?, ?, ?, ?, ?)
     </entry>
 
     <!-- 로그인 -->
     <entry key="login">
-        <![CDATA[
         SELECT * FROM members WHERE id = ? AND pwd = ?
-        ]]>
     </entry>
 
     <!-- 회원 정보 조회 -->
     <entry key="getMemberInfo">
-        <![CDATA[
-        SELECT *
-        FROM members
-        WHERE id = ?
-        ]]>
+        SELECT * FROM members WHERE id = ?
     </entry>
 
     <!-- 회원 정보 수정 -->
     <entry key="updateMemberInfo">
-        <![CDATA[
         UPDATE members
-        SET id = ?, pwd = ?, nickname = ?, birth = ?, gender = ?
-        WHERE id = ?
-        ]]>
+            SET pwd = ?, nickname = ?, birth = ?, gender = ?
+            WHERE id = ?
     </entry>
 
     <!-- 회원 정보 삭제 -->
     <entry key="deleteMemberInfo">
-        <![CDATA[
-        DELETE FROM members
-        WHERE id = ?
-        ]]>
+        DELETE FROM members WHERE id = ?
     </entry>
 
     <!-- 관심 레시피 확인 -->
     <entry key="getFavoriteRecipes">
-        <![CDATA[
-        SELECT recipe_name
-        FROM save_recipe
-        WHERE memNo = (
-            SELECT memNo FROM members WHERE id = ?
-        )
-        ]]>
+        SELECT r.name, r.ingredients, r.method, r.time, r.level
+            FROM recipe r
+            JOIN save_recipe s ON r.name = s.name
+            JOIN members m ON s.memNo = m.memNo
+            WHERE m.memNo = (
+                SELECT memNo FROM members WHERE id = ?)
     </entry>
 
     <!-- 관심 레시피 삭제 -->
     <entry key="deleteFavoriteRecipe">
-        <![CDATA[
         DELETE FROM save_recipe
-        WHERE memNo = (
-            SELECT memNo FROM members WHERE id = ?
-        ) AND name = ?
-        ]]>
+            WHERE memNo = (
+                SELECT memNo FROM members WHERE id = ?
+            ) AND name = ?
     </entry>
 
 </properties>

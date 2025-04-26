@@ -1,29 +1,26 @@
-package frozen.member.model.service;
+package frozen.member.service;
 
-import frozen.member.model.dto.Member;
-import frozen.member.model.dao.MemberRepository;
+
+import frozen.common.domain.Recipe;
+import frozen.member.repository.MemberRepository;
+import frozen.common.domain.Member;
 
 import java.sql.Connection;
-import java.time.LocalDate;
 import java.util.List;
 
 import static frozen.common.JDBCTemplate.*;
 
 public class MemberService {
 
-    private final MemberRepository memberRepository;
+    private final MemberRepository memRepository = new MemberRepository();
 
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
-
-    // 회원가입 처리
+    // 회원가입
     public boolean signUp(Member member) {
         Connection con = getConnection();
         boolean isSuccess = false;
 
         try {
-            isSuccess = memberRepository.insertMember(con, member);
+            isSuccess = memRepository.insertMember(con, member);
             if (isSuccess) {
                 commit(con);  // 성공하면 commit
             } else {
@@ -39,33 +36,36 @@ public class MemberService {
         return isSuccess;
     }
 
-    // 로그인 처리
-    public boolean login(String id, String pwd) {
+    // 로그인
+    public boolean login(String id, String password) {
+
         Connection con = getConnection();
-        boolean isLoggedIn = memberRepository.login(con, id, pwd);
+        boolean isLoggedIn = memRepository.login(con, id, password);
         close(con);  // 연결 종료
         return isLoggedIn;
     }
 
-    // 회원 정보 조회
-    public Member getMemberInfo(String id) {
+    // 관리자 여부 조회
+    public boolean isAdmin(String id, String password) {
         Connection con = getConnection();
-        Member member = memberRepository.getMemberInfo(con, id);
-        close(con);
+        boolean result = memRepository.isAdmin(con, id, password);
+        close(con);  // 연결 종료
+        return result;
+    }
 
-        // 로그 추가
-        if (member == null) {
-            System.out.println("회원 정보를 찾을 수 없습니다. 아이디: " + id);
-        }
+    // 회원 정보 조회
+    public Member getMemberInfo(Member mem) {
+        Connection con = getConnection();
+        Member member = memRepository.getMemberInfo(con, mem);
+        close(con);
 
         return member;
     }
 
-
     // 회원 정보 수정
-    public boolean updateMemberInfo(String userId, String newId, String newPwd, String newNickname, LocalDate newBirth, String newGender) {
+    public boolean updateMemberInfo(Member member) {
         Connection con = getConnection();
-        boolean isUpdated = memberRepository.updateMember(con, userId, newId, newPwd, newNickname, newBirth, newGender);
+        boolean isUpdated = memRepository.updateMember(con, member);
         if (isUpdated) {
             commit(con);
         } else {
@@ -78,7 +78,7 @@ public class MemberService {
     // 회원 정보 삭제
     public boolean deleteMemberInfo(String userId) {
         Connection con = getConnection();
-        boolean isDeleted = memberRepository.deleteMember(con, userId);
+        boolean isDeleted = memRepository.deleteMember(con, userId);
         if (isDeleted) {
             commit(con);
         } else {
@@ -89,9 +89,10 @@ public class MemberService {
     }
 
     // 관심 레시피 확인
-    public List<String> showFavoriteRecipes(String userId) {
+    public List<Recipe> showFavoriteRecipes(String userId) {
+
         Connection con = getConnection();
-        List<String> recipes = memberRepository.getFavoriteRecipes(con, userId);
+        List<Recipe> recipes = memRepository.getFavoriteRecipes(con, userId);
         close(con);
         return recipes;
     }
@@ -99,7 +100,7 @@ public class MemberService {
     // 관심 레시피 삭제
     public boolean deleteFavoriteRecipe(String userId, String recipeName) {
         Connection con = getConnection();
-        boolean isDeleted = memberRepository.deleteFavoriteRecipe(con, userId, recipeName);
+        boolean isDeleted = memRepository.deleteFavoriteRecipe(con, userId, recipeName);
         if (isDeleted) {
             commit(con);
         } else {
@@ -108,4 +109,5 @@ public class MemberService {
         close(con);
         return isDeleted;
     }
+
 }
