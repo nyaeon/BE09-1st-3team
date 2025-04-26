@@ -165,9 +165,9 @@
   - 회원 정보 조회 및 수정
   - 관심 레시피 관리
 - 구성 요소:
-  - MemberController.java
-  - MemberService.java
-  - MemberRepository.java
+  - ```MemberController.java```
+  - ```MemberService.java```
+  - ```MemberRepository.java```
 ### 2.2 식재료 관리 서비스 (Ingredient Management Service)
 - 역할: 식재료 등록, 조회, 수정, 삭제
 - 책임:
@@ -175,29 +175,29 @@
   - 식재료 목록 조회 (정렬 기능 포함)
   - 식재료 정보 수정 및 삭제
 - 구성 요소:
-  - ingCon.java
-  - ingredientService.java
-  - ingredientRepository.java
+  - ```ingCon.java```
+  - ```ingredientService.java
+  - ```ingredientRepository.java```
 ### 2.3 유통기한 관리 서비스 (Expiration Confirmation Service)
 - 역할: 유통기한 임박 및 초과 재료 확인
 - 책임:
   - 유통기한 임박 재료 목록 제공 (오늘~3일 후)
   - 유통기한 초과 재료 목록 제공
 - 구성 요소:
-  - ExpirationController.java
-  - ApproachService.java
-  - ExcessService.java
-  - ApproachRepository.java
-  - ExcessRepository.java
+  - ```ExpirationController.java
+  - ```ApproachService.java```
+  - ```ExcessService.java```
+  - ```ApproachRepository.java```
+  - ```ExcessRepository.java```
 ### 2.4 레시피 추천 서비스 (Recipe Recommendation Service)
 - 역할: 식재료 기반 레시피 추천
 - 책임:
   - 등록된 식재료를 기반으로 레시피 추천
   - 추천된 레시피 목록 제공
 - 구성 요소:
-  - RecommendController.java
-  - RecommendService.java
-  - RecommendRepository.java
+  - ```RecommendController.java```
+  - ```RecommendService.java```
+  - ```RecommendRepository.java```
 ### 2.5 관리자 업무 서비스 (Admin Task Service)
 - 역할: 레시피 등록, 수정, 삭제
 - 책임:
@@ -205,17 +205,17 @@
   - 관리자가 레시피 삭제
   - 전체 레시피 조회
 - 구성 요소:
-  - AdminController.java
-  - AdminService.java
-  - AdminRepository.java
+  - ```AdminController.java```
+  - ```AdminService.java```
+  - ```AdminRepository.java```
 ### 2.6 식재료 소비 기록 서비스 (Ingredient Usage Log Service)
 - 역할: 식재료 소비 및 폐기 기록 관리
 - 책임:
   - 폐기된 재료 기록
   - 섭취 패턴 분석 (한 달간 4회 이상 섭취 재료 표시)
 - 구성 요소:
-  - managementService.java
-  - managementRepository.java
+  - ```managementService.java```
+  - ```managementRepository.java```
   - ```Management.java```
  
 ## 3. API
