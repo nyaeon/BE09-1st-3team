@@ -8,7 +8,7 @@ import frozen.recommendation.controller.recController;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import static frozen.member.controller.MemberController2.memController;
+import static frozen.member.controller.MemberController.memController;
 
 public class Application {
 
