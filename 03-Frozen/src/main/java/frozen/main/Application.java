@@ -3,6 +3,7 @@ package frozen.main;
 import frozen.admin.controller.AdminController;
 import frozen.expiration.controller.ExpirationController;
 import frozen.ingredient.controller.ingCon;
+import frozen.ingredientManagement.controller.manaIngCon;
 import frozen.recommendation.controller.RecommendController;
 import frozen.member.controller.MemberController;
 
@@ -61,10 +62,10 @@ public class Application {
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1: ingCon.ingredientManagement();break;
+                case 1: ingCon.ingredient();break;
                 case 2: ExpirationController.expireRun(); break;
                 case 3: RecommendController.recommendController(); break;
-                case 4: break;
+                case 4: manaIngCon.ingredientManagement(); break;
                 case 5: MemberController.myPage(); break;
                 case 0: return;
                 default: break;
@@ -94,10 +95,10 @@ public class Application {
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1: ingCon.ingredientManagement();break;
+                case 1: ingCon.ingredient();break;
                 case 2: ExpirationController.expireRun(); break;
                 case 3: RecommendController.recommendController(); break;
-                case 4: break;
+                case 4: manaIngCon.ingredientManagement(); break;
                 case 5: MemberController.myPage(); break;
                 case 6: showAdminMenu(); break;
                 case 0: return;

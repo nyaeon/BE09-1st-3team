@@ -3,8 +3,8 @@
 <properties>
     <comment/>
     <entry key="insertIngredient">
-        INSERT INTO ingredients  (name ,amount ,expDate ,location)
-        VALUES (?,?,?,? )
+        INSERT INTO ingredients  (name ,amount ,expDate ,location,memNo)
+        VALUES (?,?,?,?, (SELECT memNO FROM members WHERE id =?))
     </entry>
     <entry key="updateIngredient">
         UPDATE ingredients
@@ -17,7 +17,7 @@
     <entry key="deleteIngredient">
         DELETE
         FROM ingredients
-        WHERE name = ? AND expDate = ?
+        WHERE name = ? AND expDate = ? AND memNo = (SELECT memNo FROM members WHERE id = ?)
     </entry>
     <entry key="checkIngredient">
         SELECT
@@ -26,22 +26,6 @@
             , expDate
             , location
         FROM ingredients
-    </entry>
-    <entry key="insertDelete">
-        INSERT
-        INTO exp_ingredients
-        (
-        delDate
-        ,   reason
-        ,   amount
-        ,   name
-        )
-        VALUES
-        (
-        ?
-        , ?
-        , ?
-        , ?
-        )
+        WHERE memNo = (SELECT memNo FROM members WHERE id = ?)
     </entry>
 </properties>

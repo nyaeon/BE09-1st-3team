@@ -14,10 +14,10 @@ import static frozen.common.JDBCTemplate.*;
 public class ingredientService {
     private final ingredientRepository ingredientRepository = new ingredientRepository();
 
-    public void registIngredient(Ingredient ingredient) {
+    public void registIngredient(Ingredient ingredient,String userId) {
 
         Connection con = getConnection();
-        int result = ingredientRepository.insertIngredient(con, ingredient);
+        int result = ingredientRepository.insertIngredient(con, ingredient,userId);
 
         if(result > 0) {
             commit(con);
@@ -28,10 +28,10 @@ public class ingredientService {
         close(con);
     }
 
-    public void checkIngredient() {
+    public void checkIngredient(String userId) {
 
         Connection con = getConnection();
-        int result = ingredientRepository.checkIngredient(con);
+        int result = ingredientRepository.checkIngredient(con, userId);
 
         if(result > 0) {
             commit(con);
@@ -55,13 +55,17 @@ public class ingredientService {
         close(con);
     }
 
-    public Ingredient removeIngredient(String name, LocalDate date) {
+    public Ingredient removeIngredient(String name, LocalDate date,String userId) {
         Connection con = getConnection();
-        Ingredient ing = ingredientRepository.deleteIngredient(con, name, date);
+        Ingredient ing = ingredientRepository.deleteIngredient(con, name, date,userId);
+        if(ing == null){
+            rollback(con);
+            close(con);
+            return null;
+        }
         int result = ing.getAmount();
         if(result > 0) {
             commit(con);
-            System.out.println("성공적으로 삭제 되었습니다.");
         } else {
             rollback(con);
         }

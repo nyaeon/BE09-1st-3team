@@ -2,20 +2,22 @@ package frozen.ingredientManagement;
 
 import java.time.LocalDate;
 
-public class Menagement {
+public class Management {
     private LocalDate date;
     private int reason;
     private int amount;
     private String name;
+    private int memNo;
 
-    public Menagement(LocalDate date, int reason, int amount, String name) {
+    public Management(LocalDate date, int reason, int amount, String name, int memNo) {
         this.date = date;
         this.reason = reason;
         this.amount = amount;
         this.name = name;
+        this.memNo = memNo;
     }
 
-    public Menagement() {
+    public Management() {
 
     }
 
@@ -51,13 +53,16 @@ public class Menagement {
         this.name = name;
     }
 
+    public int getMemNo() {
+        return memNo;
+    }
+
+    public void setMemNo(int memNo) {
+        this.memNo = memNo;
+    }
+
     @Override
     public String toString() {
-        return "Management{" +
-                "date=" + date +
-                ", reason=" + reason +
-                ", amount=" + amount +
-                ", name='" + name + '\'' +
-                '}';
+        return "["  + name + " " + reason + " 폐기량 :  " + amount + " 폐기일 : " + date +  ']';
     }
 }
