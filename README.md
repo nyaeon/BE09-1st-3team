@@ -124,14 +124,16 @@
 📌 **비기능적 요구사항**
 - 사용자 데이터 보호
   - 회원 정보 및 관심 레시피 등 개인정보는 안전하게 저장되어야 하며 외부에 노출되지 않도록 보안 조치를 취해야 한다.
+
 - 권한 기반 접근 제어
   - 관리자 전용 기능(예: 레시피 등록, 수정, 삭제)은 관리자 계정으로만 접근할 수 있어야 한다.
+
 - 데이터 정합성 유지
   - 모든 입력 데이터는 유효성 검사를 거쳐야 하며, 잘못된 데이터는 저장되지 않아야 한다.
   - 예: 유통기한은 과거일 수 없음, 수량은 음수가 될 수 없음 등
+
 - 시스템 응답 속도
   - 사용자가 요청한 기능(재료 조회, 레시피 추천, 회원 정보 수정 등)은 평균적으로 3초 이내에 응답해야 한다.
-
 
 - 사용자 편의성 (Usability)
   - 인터페이스는 직관적이고 사용자가 별도의 도움 없이 각 기능을 쉽게 사용할 수 있어야 한다.
@@ -143,13 +145,20 @@
 - 시스템 종료 및 초기화
   - 시스템 종료 시, 특정 임시 데이터(예: 세션 정보)는 자동 초기화되어야 하며, 영구 데이터는 손상되지 않아야 한다.
 ---
-# MSA설계서: 냉장GO 시스템
+# MSA설계서: 냉장GO - 식재료 관리와 유통기한 알림 시스템
 ## 1. 시스템 개요
-"냉장GO" 시스템은 마이크로서비스 아키텍처(MSA)를 기반으로 사용자 계정 관리, 식재료 관리, 레시피 추천, 유통기한 관리, 식재료 소비 기록 등을 분산 처리하는 시스템입니다.
-모든 서비스는 독립적으로 개발 및 배포 가능하며, RESTful API를 통해 통신합니다.
+- "냉장GO" 시스템은 마이크로서비스 아키텍처(MSA)를 기반으로 사용자 계정 관리, 식재료 관리, 레시피 추천, 유통기한 관리, 식재료 소비 기록 등을 분산 처리하는 시스템입니다.
+- 모든 서비스는 독립적으로 개발 및 배포 가능하며, RESTful API를 통해 통신합니다.
+- 시스템은 다음과 같은 마이크로서비스로 구성됩니다.
+  - 회원 관리 서비스 (Member Mangement Service) : 회원 가입, 로그인, 회원 정보 관리
+  - 식재료 관리 서비스 (Ingredient Management Service) : 식재료 등록, 조회, 수정 삭제
+  - 유통기한 관리 서비스 (Expiration Confirmation Service) : 유통기한 임박 및 초과 재료 확인
+  - 레시피 추천 서비스 (Recipe Recommendation Service) : 식재료 기반 레시피 추천
+  - 관리자 업무 서비스 (Admin Task Service) : 레시피 등록, 수정, 삭제
+  - 식재료 소비 기록 서비스 (Ingredient Usage Log Service) : 식재료 소비 및 폐기 기록 확인
 
 ## 2. 서비스 구성 및 정의
-### 2.1 회원 관리 서비스 (Member Service)
+### 2.1 회원 관리 서비스 (Member Management Service)
 - 역할: 회원 가입, 로그인, 회원 정보 관리
 - 책임:
   - 사용자 계정 등록 및 인증
@@ -159,7 +168,7 @@
   - MemberController.java
   - MemberService.java
   - MemberRepository.java
-### 2.2 식재료 관리 서비스 (Ingredient Service)
+### 2.2 식재료 관리 서비스 (Ingredient Management Service)
 - 역할: 식재료 등록, 조회, 수정, 삭제
 - 책임:
   - 식재료 이름, 수량, 유통기한, 보관 위치 등록
@@ -169,7 +178,7 @@
   - ingCon.java
   - ingredientService.java
   - ingredientRepository.java
-### 2.3 유통기한 관리 서비스 (Expiration Service)
+### 2.3 유통기한 관리 서비스 (Expiration Confirmation Service)
 - 역할: 유통기한 임박 및 초과 재료 확인
 - 책임:
   - 유통기한 임박 재료 목록 제공 (오늘~3일 후)
@@ -180,7 +189,7 @@
   - ExcessService.java
   - ApproachRepository.java
   - ExcessRepository.java
-### 2.4 레시피 추천 서비스 (Recommendation Service)
+### 2.4 레시피 추천 서비스 (Recipe Recommendation Service)
 - 역할: 식재료 기반 레시피 추천
 - 책임:
   - 등록된 식재료를 기반으로 레시피 추천
@@ -189,7 +198,7 @@
   - RecommendController.java
   - RecommendService.java
   - RecommendRepository.java
-### 2.5 관리자 서비스 (Admin Service)
+### 2.5 관리자 업무 서비스 (Admin Task Service)
 - 역할: 레시피 등록, 수정, 삭제
 - 책임:
   - 관리자가 새로운 레시피 등록 및 수정
