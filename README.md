@@ -87,6 +87,7 @@
 
 - 논리 모델
 ![ERD1](https://github.com/user-attachments/assets/a50adeb5-9609-4517-a48e-9c1dbbed3435)
+
 - 물리 모델
 ![ERD2](https://github.com/user-attachments/assets/ac03b371-dbda-4a37-9c18-6ce2574f25f8)
 
