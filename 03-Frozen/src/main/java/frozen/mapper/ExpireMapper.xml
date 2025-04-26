@@ -6,5 +6,9 @@
         SELECT *
             FROM ingredients
             WHERE expDate = ?
+            AND
+            memNo = (SELECT memNo
+                        FROM members
+                        WHERE id = ?)
     </entry>
 </properties>

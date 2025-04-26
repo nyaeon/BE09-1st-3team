@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Properties;
 
 import static frozen.common.JDBCTemplate.close;
+import static frozen.member.controller.MemberController.userId;
 
 public class RecommendRepository {
 
@@ -31,8 +32,8 @@ public class RecommendRepository {
         }
     }
 
-
-    public List<Ingredients> searchIng(Connection con, Ingredients ing) {
+    // 등록된 식재료 검색
+    public List<Ingredients> searchIng(Connection con, String userId) {
         List<Ingredients> ingList = new ArrayList<>();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -40,6 +41,7 @@ public class RecommendRepository {
 
         try {
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, userId);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -66,30 +68,7 @@ public class RecommendRepository {
         return ingList;
     }
 
-    public boolean searchExist(Connection con, Ingredients ing) {
-
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        String sql = prop.getProperty("searchExistIngredients");
-        boolean result = false;
-
-        try {
-            pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, ing.getName());
-            rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                result = true;
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            close(rs);
-            close(pstmt);
-        }
-        return result;
-    }
-
+    // 레시피 검색
     public Recipe searchRecipe(Connection con, Recipe recipe) {
         Recipe resultRecipe = new Recipe();
         PreparedStatement pstmt = null;
@@ -124,5 +103,27 @@ public class RecommendRepository {
             close(pstmt);
         }
         return resultRecipe;
+    }
+
+    // 관심 레시피 저장
+    public boolean saveRecipe(Connection con, String recipeName) {
+
+        PreparedStatement pstmt = null;
+        String sql = prop.getProperty("saveRecipe");
+
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, recipeName);
+            pstmt.setString(2, userId);
+
+            int result = pstmt.executeUpdate();
+
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            close(pstmt);
+        }
     }
 }

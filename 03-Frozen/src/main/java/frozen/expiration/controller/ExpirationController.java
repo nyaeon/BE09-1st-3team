@@ -9,9 +9,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Scanner;
 
-import static frozen.main.Application.expCon;
+import static frozen.member.controller.MemberController.userId;
 
-public class expController {
+public class ExpirationController {
 
     public static void expireRun() {
 
@@ -37,8 +37,8 @@ public class expController {
             System.out.print(menu);
             int choice = sc.nextInt();
             switch (choice){
-                case 1: {
-                    List<Ingredients> approachResult = appService.searchApp(ing);
+                case 1: { // 유통기한 임박 식재료 조회
+                    List<Ingredients> approachResult = appService.searchApp(ing, userId);
                     if (approachResult.isEmpty()) {
                         System.out.println("유통기한 임박 재료가 없습니다.");
                     } else {
@@ -51,8 +51,8 @@ public class expController {
                     }
                     break;
                 }
-                case 2: {
-                    List<Ingredients> excessResult = excService.searchExc(ing);
+                case 2: { // 유통기한 지난 식재료 조회
+                    List<Ingredients> excessResult = excService.searchExc(ing, userId);
                     if (excessResult.isEmpty()) {
                         System.out.println("등록된 식재료 중 유통기한이 지난 항목은 없습니다.");
                     } else {

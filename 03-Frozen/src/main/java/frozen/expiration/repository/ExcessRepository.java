@@ -25,7 +25,8 @@ public class ExcessRepository {
         }
     }
 
-    public List<Ingredients> searchExc(Connection con, Ingredients ing) {
+    // 유통기한 지난 재료 조회
+    public List<Ingredients> searchExc(Connection con, Ingredients ing, String userId) {
         List<Ingredients> resultList = new ArrayList<>();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -36,6 +37,7 @@ public class ExcessRepository {
             for (int i = 0; i < 100; i++){
                 LocalDate targetDate = ing.getExpDate().minusDays(i + 1);
                 pstmt.setDate(1, Date.valueOf(targetDate));
+                pstmt.setString(2, userId);
                 rs = pstmt.executeQuery();
                 while (rs.next()) {
                     Ingredients resultIng = new Ingredients();

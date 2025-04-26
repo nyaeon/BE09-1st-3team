@@ -13,10 +13,11 @@ public class ExcessService {
 
     private final ExcessRepository excRepository = new ExcessRepository();
 
-    public List<Ingredients> searchExc(Ingredients ing) {
+    // 유통기한 지난 재료 조회
+    public List<Ingredients> searchExc(Ingredients ing, String userId) {
 
         Connection con = getConnection();
-        List<Ingredients> result = excRepository.searchExc(con, ing);
+        List<Ingredients> result = excRepository.searchExc(con, ing, userId);
         close(con);
         return result;
     }

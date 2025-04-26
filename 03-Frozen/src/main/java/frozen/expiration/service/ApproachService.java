@@ -12,10 +12,11 @@ public class ApproachService {
 
     private final ApproachRepository appRepository = new ApproachRepository();
 
-    public List<Ingredients> searchApp(Ingredients ing) {
+    // 유통기한 임박 재료 조회
+    public List<Ingredients> searchApp(Ingredients ing, String userId) {
 
         Connection con = getConnection();
-        List<Ingredients> result = appRepository.searchApp(con,ing);
+        List<Ingredients> result = appRepository.searchApp(con, ing, userId);
         close(con);
         return result;
     }

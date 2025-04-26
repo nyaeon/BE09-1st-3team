@@ -26,7 +26,8 @@ public class ApproachRepository {
         }
     }
 
-    public List<Ingredients> searchApp(Connection con, Ingredients ing) {
+    // 유통기한 임박 재료 조회
+    public List<Ingredients> searchApp(Connection con, Ingredients ing, String userId) {
         List<Ingredients> resultList = new ArrayList<>();
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -37,6 +38,7 @@ public class ApproachRepository {
             for (int i = 0; i < 4; i++){
                 LocalDate targetDate = ing.getExpDate().plusDays(i);
                 pstmt.setDate(1, Date.valueOf(targetDate));
+                pstmt.setString(2, userId);
                 rs = pstmt.executeQuery();
                 while (rs.next()) {
                     Ingredients resultIng = new Ingredients();

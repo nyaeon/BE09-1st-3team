@@ -4,12 +4,10 @@
     <comment/>
     <entry key="searchIngredients">
         SELECT *
-        FROM ingredients
-    </entry>
-    <entry key="searchExistIngredients">
-        SELECT *
-        FROM ingredients
-        WHERE name = ?
+            FROM ingredients
+            WHERE memNo = (SELECT memNo
+                                FROM members
+                                WHERE id = ?)
     </entry>
     <entry key="searchRecommendRecipe">
         SELECT *
@@ -17,5 +15,11 @@
         WHERE ingredients LIKE ? AND ingredients LIKE ? AND ingredients LIKE ?
         ORDER BY RAND()
         LIMIT 1;
+    </entry>
+    <entry key="saveRecipe">
+        INSERT INTO save_recipe (memNo, name)
+        SELECT memNo, ?
+        FROM members
+        WHERE id = ?
     </entry>
 </properties>

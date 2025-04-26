@@ -1,19 +1,16 @@
 package frozen.main;
 
 import frozen.admin.controller.AdminController;
-import frozen.expiration.controller.expController;
+import frozen.expiration.controller.ExpirationController;
 import frozen.ingredient.controller.ingCon;
-import frozen.recommendation.controller.recController;
+import frozen.recommendation.controller.RecommendController;
+import frozen.member.controller.MemberController;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import static frozen.member.controller.MemberController.memController;
-
 public class Application {
 
-    public static expController expCon = new expController();
-    public static recController recCon = new recController();
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -31,9 +28,9 @@ public class Application {
             System.out.print(initialMenu);
             int choice = sc.nextInt();
             switch (choice) {
-                case 1: memController.signUp();
+                case 1: MemberController.signUp();
                     break;
-                case 2: memController.login();
+                case 2: MemberController.login();
                     break;
                 case 0: return;
                 default:
@@ -41,9 +38,6 @@ public class Application {
             }
 
         }
-
-        // MemberController의 main 메서드를 호출하여 프로그램 실행
-        //MemberController.memberRun();
     }
 
     public static void mainRun(){
@@ -68,10 +62,10 @@ public class Application {
 
             switch (choice) {
                 case 1: ingCon.ingredientManagement();break;
-                case 2: expCon.expireRun(); break;
-                case 3: recCon.recommendController(); break;
+                case 2: ExpirationController.expireRun(); break;
+                case 3: RecommendController.recommendController(); break;
                 case 4: break;
-                case 5: memController.myPage(); break;
+                case 5: MemberController.myPage(); break;
                 case 0: return;
                 default: break;
             }
@@ -101,10 +95,10 @@ public class Application {
 
             switch (choice) {
                 case 1: ingCon.ingredientManagement();break;
-                case 2: expCon.expireRun(); break;
-                case 3: recCon.recommendController(); break;
+                case 2: ExpirationController.expireRun(); break;
+                case 3: RecommendController.recommendController(); break;
                 case 4: break;
-                case 5: memController.myPage(); break;
+                case 5: MemberController.myPage(); break;
                 case 6: showAdminMenu(); break;
                 case 0: return;
                 default: break;
