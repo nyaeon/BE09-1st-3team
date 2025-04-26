@@ -144,8 +144,107 @@
   - 시스템 종료 시, 특정 임시 데이터(예: 세션 정보)는 자동 초기화되어야 하며, 영구 데이터는 손상되지 않아야 한다.
 
 # MSA설계서: 냉장GO 시스템
+
 ## 1. 시스템 개요
-- "냉장GO" 시스템은 각기 독립적인 마이크로서비스를 활용하여 사용자 계정 관리, 식재료 관리, 레시피 추천, 유통기한 관리, 소비 기록 등을 효율적으로 처리하는 시스템입니다. 각 서비스는 RESTful API를 통해 통신하며, 사용자에게 다양한 기능을 제공합니다. 본 시스템은 확장성과 유연성을 고려하여 마이크로서비스 아키텍처(MSA)로 설계되었습니다.
+"냉장GO" 시스템은 마이크로서비스 아키텍처(MSA)를 기반으로 사용자 계정 관리, 식재료 관리, 레시피 추천, 유통기한 관리, 식재료 소비 기록 등을 분산 처리하는 시스템입니다.
+모든 서비스는 독립적으로 개발 및 배포 가능하며, RESTful API를 통해 통신합니다.
+
+
+## 2. 서비스 구성 및 정의
+
+### 2.1 회원 관리 서비스 (Member Service)
+- 역할: 회원 가입, 로그인, 회원 정보 관리
+- 책임:
+  - 사용자 계정 등록 및 인증
+  - 회원 정보 조회 및 수정
+  - 관심 레시피 관리
+  - 회원 탈퇴
+- 구성 요소:
+  - MemberController.java
+  - MemberService.java
+  - MemberRepository.java
+### 2.2 식재료 관리 서비스 (Ingredient Service)
+- 역할: 식재료 등록, 조회, 수정, 삭제
+- 책임:
+  - 식재료 이름, 수량, 유통기한, 보관 위치 등록
+  - 식재료 목록 조회 (정렬 기능 포함)
+  - 식재료 정보 수정 및 삭제
+- 구성 요소:
+  - ingCon.java
+  - ingredientService.java
+  - ingredientRepository.java
+### 2.3 유통기한 관리 서비스 (Expiration Service)
+- 역할: 유통기한 임박 및 초과 재료 확인
+- 책임:
+  - 유통기한 임박 재료 목록 제공 (오늘~3일 후)
+  - 유통기한 초과 재료 목록 제공
+- 구성 요소:
+  - ExpirationController.java
+  - ApproachService.java
+  - ExcessService.java
+  - ApproachRepository.java
+  - ExcessRepository.java
+### 2.4 레시피 추천 서비스 (Recommendation Service)
+- 역할: 식재료 기반 레시피 추천
+- 책임:
+  - 등록된 식재료를 기반으로 레시피 추천
+  - 추천된 레시피 목록 제공
+- 구성 요소:
+  - RecommendController.java
+  - RecommendService.java
+  - RecommendRepository.java
+### 2.5 관리자 서비스 (Admin Service)
+- 역할: 레시피 등록, 수정, 삭제
+- 책임:
+  - 관리자가 새로운 레시피 등록 및 수정
+  - 관리자가 레시피 삭제
+  - 전체 레시피 조회
+- 구성 요소:
+  - AdminController.java
+  - AdminService.java
+  - AdminRepository.java
+### 2.6 식재료 소비 기록 서비스 (Ingredient Usage Log Service)
+- 역할: 식재료 소비 및 폐기 기록 관리
+- 책임:
+  - 폐기된 재료 기록
+  - 섭취 패턴 분석 (한 달간 4회 이상 섭취 재료 표시)
+- 구성 요소:
+  - managementService.java
+  - managementRepository.java
+  - Management.java
+## 3. API 상세 스펙
+### 회원 관리
+- POST /member/signup - 회원 가입
+- POST /member/login - 로그인
+- GET /member/mypage - 회원 정보 조회
+- PUT /member/update - 회원 정보 수정
+- DELETE /member/delete - 회원 탈퇴
+### 식재료 관리
+- POST /ingredient/add - 식재료 추가
+- GET /ingredient/list - 식재료 목록 조회
+- PUT /ingredient/update - 식재료 수정
+- DELETE /ingredient/delete - 식재료 삭제
+### 유통기한 관리
+- GET /expiration/near - 임박 식재료 조회
+- GET /expiration/expired - 유통기한 초과 식재료 조회
+### 레시피 추천
+- GET /recommend/recipes - 추천 레시피 조회
+### 관리자 기능
+- POST /admin/recipe/add - 레시피 등록
+- PUT /admin/recipe/update - 레시피 수정
+- DELETE /admin/recipe/delete - 레시피 삭제
+- GET /admin/recipe/list - 전체 레시피 목록 조회
+### 소비 기록 관리
+- GET /usage/history - 소비 기록 조회
+- GET /usage/pattern - 섭취 패턴 분석
+
+## 4. 서비스 연동 흐름도
+- 사용자는 회원 가입 및 로그인을 통해 인증 완료
+- 인증된 사용자는 식재료 추가 및 조회 기능 이용
+- 시스템은 유통기한 임박 재료를 식별하여 알림 제공
+- 사용자는 추천 레시피를 통해 식사 준비 가능
+- 식재료 소비/폐기 활동은 소비 기록에 자동 저장
+- 관리자는 레시피 관리 기능을 통해 전체 데이터 관리
 
 - **사용자 관리 서비스(User Management Service)**: 사용자 계정 관리, 인증, 권한 관리
 - **회원 관리 서비스(Member Management Service)**: 회원가입, 로그인 및 회원 정보 관리
@@ -154,115 +253,6 @@
 - **유통기한 확인 서비스(Expiration Confirmation Service)**: 유통기한 관련 관리
 - **추천 레시피 확인 서비스(Recipe Recommendation Service)**: 레시피 추천 및 관리
 - **식재료 소비 기록 서비스(Ingredient Usage Log Service)**: 식재료 소비 기록 관리
-
-
-## 2. 서비스 구성 및 정의
-
-### 2.1 사용자 관리 서비스 (User Management Service)
-
-- **역할**: 사용자 계정 관리, 인증, 권한 관리  
-- **책임**:
-  - 사용자 등록, 수정, 삭제
-  - 사용자 인증 및 권한 관리 (로그인, 로그아웃)
-  - 사용자의 역할 기반 권한 제어
-
-- **구성 요소**:
-  - `MemberService.java`: 사용자 계정 관련 비즈니스 로직 처리
-  - `MemberRepository.java`: 사용자 데이터 접근
-  - `.java`: 인증 및 권한 관리
-  - `.java`: 사용자 역할 관리
-
----
-
-### 2.2 회원 관리 서비스 (Member Management Service)
-
-- **역할**: 회원가입, 로그인 및 회원 정보 관리  
-- **책임**:
-  - 신규 회원 가입
-  - 로그인 및 로그아웃 처리
-  - 회원 정보 조회 및 수정
-  - 관심 레시피 및 마이페이지 관리
-
-- **구성 요소**:
-  - `.java`: 회원 관련 비즈니스 로직 처리
-  - `.java`: 회원 데이터 접근
-  - `.java`: 인증 및 로그인 관리
-
----
-
-### 2.3 관리자 업무 서비스 (Admin Task Service)
-
-- **역할**: 레시피 및 관리 기능  
-- **책임**:
-  - 관리자가 새로운 레시피 등록, 수정, 삭제
-  - 전체 레시피 목록 조회
-  - 관리자 권한으로 레시피 정보 관리
-
-- **구성 요소**:
-  - `.java`: 관리자 관련 비즈니스 로직 처리
-  - `.java`: 관리자 데이터 접근
-  - `.java`: 레시피 관련 비즈니스 로직 처리
-  - `.java`: 레시피 데이터 접근
-
----
-
-### 2.4 식재료 관리 서비스 (Ingredients Management Service)
-
-- **역할**: 식재료 관리 및 유통기한 확인  
-- **책임**:
-  - 식재료 등록, 수정, 삭제
-  - 식재료 정보 조회 및 관리
-  - 유통기한 임박 및 유통기한 지난 재료 확인
-
-- **구성 요소**:
-  - `.java`: 식재료 관련 비즈니스 로직 처리
-  - `.java`: 식재료 데이터 접근
-  - `.java`: 유통기한 관련 비즈니스 로직 처리
-
----
-
-### 2.5 유통기한 확인 서비스 (Expiration Confirmation Service)
-
-- **역할**: 유통기한 관련 관리  
-- **책임**:
-  - 유통기한 임박한 재료 확인
-  - 유통기한 지난 재료 관리
-  - 유통기한 알림 제공
-
-- **구성 요소**:
-  - `.java`: 유통기한 관련 비즈니스 로직 처리
-  - `.java`: 유통기한 데이터 접근
-  - `.java`: 유통기한 알림 기능
-
----
-
-### 2.6 추천 레시피 확인 서비스 (Recipe Recommendation Service)
-
-- **역할**: 레시피 추천 및 관리  
-- **책임**:
-  - 사용자의 식재료를 기반으로 레시피 추천
-  - 레시피 목록 조회 및 관리
-  - 관리자가 레시피 추가, 수정, 삭제
-
-- **구성 요소**:
-  - `.java`: 레시피 관련 비즈니스 로직 처리
-  - `.java`: 레시피 데이터 접근
-  - `.java`: 사용자 맞춤형 레시피 추천 로직 처리
-
----
-
-### 2.7 식재료 소비 기록 서비스 (Ingredient Usage Log Service)
-
-- **역할**: 식재료 소비 기록 관리  
-- **책임**:
-  - 식재료 소비 기록 저장
-  - 유통기한 초과로 폐기된 재료 기록
-  - 소비 패턴 알림
-
-- **구성 요소**:
-  - `.java`: 소비 기록 관련 비즈니스 로직 처리
-  - `.java`: 소비 기록 데이터 접근
-  - `.java`: 소비 패턴 알림 서비스
 
 ---
 
