@@ -25,7 +25,7 @@ public class ingredientRepository {
         }
     }
 
-    public int insertIngredient(Connection con, Ingredient ingred) {
+    public int insertIngredient(Connection con, Ingredient ingred,String id) {
 
         PreparedStatement pstmt = null;
         int result = 0;
@@ -38,6 +38,7 @@ public class ingredientRepository {
             pstmt.setInt(2, ingred.getAmount());
             pstmt.setDate(3, Date.valueOf(ingred.getDeadLine()));
             pstmt.setString(4, ingred.getLocation());
+            pstmt.setString(5, id);
 
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -49,7 +50,7 @@ public class ingredientRepository {
         return result;
     }
 
-    public int checkIngredient(Connection con) {
+    public int checkIngredient(Connection con,String id) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Ingredient ing = null;
@@ -57,6 +58,7 @@ public class ingredientRepository {
         try {
             String sql = prop.getProperty("checkIngredient");
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, id);
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 ing = new Ingredient();
@@ -100,8 +102,8 @@ public class ingredientRepository {
         return result;
     }
 
-    public Ingredient deleteIngredient(Connection con, String ingredientName, LocalDate expDate) {
-        Ingredient ing = new Ingredient();
+    public Ingredient deleteIngredient(Connection con, String ingredientName, LocalDate expDate,String userId) {
+        Ingredient ing = null;
         PreparedStatement pstmt = null;
         PreparedStatement pstmt2 = null;
         ResultSet rs = null;
@@ -109,25 +111,33 @@ public class ingredientRepository {
 
         try {
 
-            String sqlDelete = "SELECT name, amount FROM ingredients WHERE name = ? AND expDate = ?";
+            String sqlDelete = "SELECT name, amount, memNo FROM ingredients WHERE name = ? AND expDate = ? AND (SELECT memNo FROM members WHERE Id = ?)";
 
             pstmt2 = con.prepareStatement(sqlDelete);
             pstmt2.setString(1, ingredientName);
             pstmt2.setDate(2, Date.valueOf(expDate));
+            pstmt2.setString(3,userId);
             rs = pstmt2.executeQuery();
             if (rs.next()) {
+                ing = new Ingredient();
                 ing.setIngredientName(rs.getString("name"));
-                ing.setAmount(rs.getInt("amount"));;
+                ing.setAmount(rs.getInt("amount"));
+                ing.setMemNo(rs.getInt("memNo"));
             }
             String sql = prop.getProperty("deleteIngredient");
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, ingredientName);
             pstmt.setDate(2, Date.valueOf(expDate));
+            pstmt.setString(3, userId);
+
 
             result = pstmt.executeUpdate();
+            if(result == 0){
+                return null;
+            }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("DB 오류",e);
         } finally {
             close(rs);
             close(pstmt);

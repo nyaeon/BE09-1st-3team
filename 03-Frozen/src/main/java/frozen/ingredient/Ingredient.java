@@ -7,7 +7,7 @@ public class Ingredient {
     private int amount;
     private LocalDate deadLine;
     private String location;
-
+    private int memNo;
 
 
     public Ingredient() {
@@ -58,8 +58,13 @@ public class Ingredient {
         this.location = location;
     }
 
+    public int getMemNo() {return memNo;}
+
+    public void setMemNo(int memNo) {this.memNo = memNo;}
+
+
     @Override
     public String toString() {
-        return "["+" 재료명 :" + ingredientName + " 재료 수량 : " + amount +  " 유통 기한 " + deadLine + " 보관 위치 " + location+ "]";
+        return "["+" 재료명 :" + ingredientName + " 재료 수량 : " + amount +  " 유통 기한 " + deadLine + " 보관 위치 " + location+ " "+memNo+ "]";
     }
 }

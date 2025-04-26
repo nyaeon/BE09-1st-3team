@@ -3,15 +3,17 @@ package frozen.ingredient.controller;
 
 import frozen.ingredient.Ingredient;
 import frozen.ingredient.service.ingredientService;
-import frozen.ingredientManagement.Menagement;
-import frozen.ingredientManagement.managemenntService;
+import frozen.ingredientManagement.Management;
+import frozen.ingredientManagement.service.managemenntService;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import static frozen.member.controller.MemberController.userId;
+
 public class ingCon {
-    public static void ingredientManagement() {
+    public static void ingredient() {
         ingredientService ingredient = new ingredientService();
-        managemenntService menegement = new managemenntService();
+        managemenntService manegement = new managemenntService();
         Scanner sc = new Scanner(System.in);
 
         while(true) {
@@ -27,19 +29,21 @@ public class ingCon {
             int select = sc.nextInt();
             switch (select) {
                 case 1:
-                    ingredient.registIngredient(inputIngredient());
+                    ingredient.registIngredient(inputIngredient(),userId);
                     break;
                 case 2:
-                    ingredient.checkIngredient();
+                    ingredient.checkIngredient(userId);
                     break;
                 case 3:
                     ingredient.modifyIngredient(inputIngredient());
                     break;
                 case 4:
-
-                    String input = inputString();
-                    Ingredient ing = ingredient.removeIngredient(input,inputDate());
-                    menegement.updateDelete(inputDelete(ing.getIngredientName(),ing.getAmount()));
+                    String input =inputString();
+                    Ingredient ing = ingredient.removeIngredient(input,inputDate(),userId);
+                    System.out.println(ing.toString());
+                    if(ing != null){
+                        manegement.updateDelete(inputDelete(input,ing.getAmount(),ing.getMemNo()));
+                    }
                     break;
                 case 5:
                     System.out.println("식재료 관리 메뉴를 종료합니다.");
@@ -51,12 +55,12 @@ public class ingCon {
     }
 
 
-    private static Menagement inputDelete(String delete,int amount) {
+    private static Management inputDelete(String delete, int amount, int memNo) {
         Scanner sc = new Scanner(System.in);
         LocalDate localDate = LocalDate.now();
         System.out.println("상품을 삭제하는 이유를 골라주세요(1. 섭취 완료 2. 유통기한 초과) : ");
         int reason = sc.nextInt();
-        Menagement menagement = new Menagement(localDate, reason, amount, delete);
+        Management menagement = new Management(localDate, reason, amount, delete, memNo);
         return menagement;
     }
 

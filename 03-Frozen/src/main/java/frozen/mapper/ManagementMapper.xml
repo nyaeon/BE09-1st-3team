@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment/>
+    <entry key="insertDispose">
+        SELECT name, reason, amount, delDate
+        FROM exp_ingredients
+        WHERE reason = 2 AND delDate >= CURDATE() - INTERVAL 1 MONTH
+        ORDER BY delDate ASC;
+    </entry>
+    <entry key="insertDelete">
+        INSERT INTO exp_ingredients ( delDate , reason , amount , name , memNo)
+        VALUES ( ? , ? , ? , ?, ? )
+    </entry>
+    <entry key="checkOften">
+        SELECT name
+        FROM exp_ingredients
+        WHERE reason = 1
+        AND amount >= 4
+        AND memNo = (SELECT memNo FROM members WHERE id = ? )
+    </entry>
+</properties>
