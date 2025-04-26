@@ -218,9 +218,9 @@
   - managementRepository.java
   - Management.java
  
-## 3. API 상세 스펙
+## 3. API
 ### 회원 관리
-- POST /member/signup - 회원 가입
+- POST ```/member/signup``` - 회원 가입
 - POST /member/login - 로그인
 - GET /member/mypage - 회원 정보 조회
 - PUT /member/update - 회원 정보 수정
