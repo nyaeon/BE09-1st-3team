@@ -216,33 +216,33 @@
 - 구성 요소:
   - managementService.java
   - managementRepository.java
-  - Management.java
+  - ```Management.java```
  
 ## 3. API
 ### 회원 관리
 - POST ```/member/signup``` - 회원 가입
-- POST /member/login - 로그인
-- GET /member/mypage - 회원 정보 조회
-- PUT /member/update - 회원 정보 수정
-- DELETE /member/delete - 회원 탈퇴
+- POST ```/member/login``` - 로그인
+- GET ```/member/mypage``` - 회원 정보 조회
+- PUT ```/member/update``` - 회원 정보 수정
+- DELETE ```/member/delete``` - 회원 탈퇴
 ### 식재료 관리
-- POST /ingredient/add - 식재료 추가
-- GET /ingredient/list - 식재료 목록 조회
-- PUT /ingredient/update - 식재료 수정
-- DELETE /ingredient/delete - 식재료 삭제
+- POST ```/ingredient/add``` - 식재료 추가
+- GET ```/ingredient/list``` - 식재료 목록 조회
+- PUT ```/ingredient/update``` - 식재료 수정
+- DELETE ```/ingredient/delete``` - 식재료 삭제
 ### 유통기한 관리
-- GET /expiration/near - 임박 식재료 조회
-- GET /expiration/expired - 유통기한 초과 식재료 조회
+- GET ```/expiration/near``` - 임박 식재료 조회
+- GET ```/expiration/expired``` - 유통기한 초과 식재료 조회
 ### 레시피 추천
-- GET /recommend/recipes - 추천 레시피 조회
+- GET ```/recommend/recipes``` - 추천 레시피 조회
 ### 관리자 기능
-- POST /admin/recipe/add - 레시피 등록
-- PUT /admin/recipe/update - 레시피 수정
-- DELETE /admin/recipe/delete - 레시피 삭제
-- GET /admin/recipe/list - 전체 레시피 목록 조회
+- POST ```/admin/recipe/add``` - 레시피 등록
+- PUT ```/admin/recipe/update``` - 레시피 수정
+- DELETE ```/admin/recipe/delete``` - 레시피 삭제
+- GET ```/admin/recipe/list``` - 전체 레시피 목록 조회
 ### 소비 기록 관리
-- GET /usage/history - 소비 기록 조회
-- GET /usage/pattern - 섭취 패턴 분석
+- GET ```/usage/history``` - 소비 기록 조회
+- GET ```/usage/pattern``` - 섭취 패턴 분석
 
 ## 4. 서비스 연동 흐름도
 - 사용자는 회원 가입 및 로그인을 통해 인증 완료
