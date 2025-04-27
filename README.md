@@ -22,7 +22,7 @@
 ![image](https://github.com/user-attachments/assets/50d6e9cf-ee82-4c6d-aecd-0d2ea9c7ce0f)
 
 ### 유통기한 확인 페이지
-![image](https://github.com/user-attachments/assets/0af6fa5e-e50d-451d-8650-fdc021b93e5e)
+[](https://github.com/user-attachments/assets/0af6fa5e-e50d-451d-8650-fdc021b93e5e)
 
 
 2. 만개의 레시피
