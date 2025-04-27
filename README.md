@@ -287,6 +287,7 @@
 ---
 # 화면설계서
 https://www.notion.so/coffit23/075698acf1c24ce7878d840a9aac30d9
+
 ---
 # 스토리보드
 ### 로그인 기능
@@ -336,6 +337,7 @@ https://www.notion.so/coffit23/075698acf1c24ce7878d840a9aac30d9
 ![{1762CE3A-854E-4A7A-A750-6F78053640E3}](https://github.com/user-attachments/assets/4f9c6c4e-e384-4d91-b564-28539ac657c9)
 ![{376F001B-3732-452A-9467-F61A12B2BA72}](https://github.com/user-attachments/assets/05e79475-3baa-4b3d-a724-f527ea4a41f5)
 ![{C7BACF1C-48FD-47EC-913B-63C2BB912939}](https://github.com/user-attachments/assets/e9f26644-e21b-451f-862f-c98b5350f1c5)
+
 ---
 # 기술스택
 - **프로그래밍 언어** : 
