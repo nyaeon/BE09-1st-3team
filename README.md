@@ -235,7 +235,7 @@
   - ```ManagementService.java```
   - ```ManagementRepository.java```
  
-## 3. CRUD(Create, Read, Update, Delete)
+## 3. CRUD(Create:생성, Read:조회, Update:변경, Delete:삭제)
 ### 3-1. 회원 관리 서비스 (MemberService)
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
