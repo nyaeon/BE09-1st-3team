@@ -21,13 +21,12 @@
 ### 식재료 등록 페이지
 ![image](https://github.com/user-attachments/assets/50d6e9cf-ee82-4c6d-aecd-0d2ea9c7ce0f)
 
-<br>
 ### 유통기한 확인 페이지
 ![image](https://github.com/user-attachments/assets/64a01a91-3043-4cd3-ad0f-baa1c71a1815)
 
 
 2. 만개의 레시피
-재료기반 추천 레시피 확인
+### 재료기반 추천 레시피 확인
 ![image](https://github.com/user-attachments/assets/1508e3eb-0a57-4a87-bcce-589994ccdba9)
 ![image](https://github.com/user-attachments/assets/27cdc172-06ed-4bf3-a546-075edf29aade)
 
