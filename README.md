@@ -19,15 +19,17 @@
 # 유사 프로그램 분석
 1. BEEP
 ### 식재료 등록 페이지
-![image](https://github.com/user-attachments/assets/1d1b702e-ec8b-4376-9ddb-f9b6cc2a936c)
+<img src="https://github.com/user-attachments/assets/1945b183-09fd-4372-ab02-af0cd95891d7  width="200" height="400"/>
 <br>
 ### 유통기한 확인 페이지
 <br>
+<img src="https://github.com/user-attachments/assets/a042fd3d-fde0-4666-b88c-e325d2e91853  width="200" height="400"/>
 
 2. 만개의 레시피
 재료기반 추천 레시피 확인
-![image](https://github.com/user-attachments/assets/37778944-087b-4d33-9b14-c16e3e2c0d5a)
-![image](https://github.com/user-attachments/assets/2e75fc10-bf1d-4ff1-9ba9-a4f9a28e72f9)
+<img src="https://github.com/user-attachments/assets/37778944-087b-4d33-9b14-c16e3e2c0d5a  width="200" height="400"/>
+<img src="https://github.com/user-attachments/assets/2e75fc10-bf1d-4ff1-9ba9-a4f9a28e72f9  width="200" height="400"/>
+
 
 
 ---
