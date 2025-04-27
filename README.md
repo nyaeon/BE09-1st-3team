@@ -17,16 +17,16 @@
 본 프로젝트는 사용자가 자신의 식재료를 관리하고, 이를 기반으로 필요한 레시피를 추천받는 방식으로, 식품의 낭비를 줄이고, 사용자에게 실용적인 도움을 제공하는 것을 목표로 합니다. 이를 통해 식품 관리의 편리함을 제공하고, 환경적으로도 긍정적인 영향을 미칠 수 있습니다.
 ---
 # 유사 프로그램 분석
-1. BEEP
-### 식재료 등록 페이지
+### 1. BEEP
+#### 식재료 등록 페이지
 ![image](https://github.com/user-attachments/assets/50d6e9cf-ee82-4c6d-aecd-0d2ea9c7ce0f)
 
-### 유통기한 확인 페이지
+#### 유통기한 확인 페이지
 ![image](https://github.com/user-attachments/assets/382a32e7-c952-4238-9fcb-ec24df94fe02)
 
 
-2. 만개의 레시피
-### 재료기반 추천 레시피 확인
+### 2. 만개의 레시피
+#### 재료기반 추천 레시피 확인
 ![image](https://github.com/user-attachments/assets/1508e3eb-0a57-4a87-bcce-589994ccdba9)
 ![image](https://github.com/user-attachments/assets/27cdc172-06ed-4bf3-a546-075edf29aade)
 
