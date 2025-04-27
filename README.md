@@ -268,15 +268,15 @@
 ### 3-5. 레시피 추천 서비스 (RecommendService)
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
+| FavoriteRecipe | Create | `saveRecipe(String recipeName)` | 관심 레시피 저장 |
 | Ingredients | Read | `searchIng(String userId)` | 등록된 식재료 조회 |
 | Recipe | Read | `searchRecipe(Recipe recipe)` | 레시피 검색 |
-| FavoriteRecipe | Create | `saveRecipe(String recipeName)` | 관심 레시피 저장 |
 ### 3-6. 식재료 소비 기록 서비스 (ManagementService)
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
-| Management | Update | `updateDelete(Management menu)` | 식재료 소비/폐기 기록 업데이트 |
 | Management | Read | `serchIngredient(String id)` | 폐기된 재료 조회 |
 | Management | Read | `oftenconsumIngredient(String id)` | 자주 소비한 재료 조회 |
+| Management | Update | `updateDelete(Management menu)` | 식재료 소비/폐기 기록 업데이트 |
 ## 4. 서비스 연동 흐름도
 - 사용자는 회원 가입 및 로그인을 통해 인증 완료
 - 인증된 사용자는 식재료 추가 및 조회 기능 이용
