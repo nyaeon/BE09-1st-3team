@@ -171,7 +171,7 @@
 - 시스템은 다음과 같은 마이크로서비스 개념을 참고하여 논리적으로 서비스들을 분리하여 구성됩니다.
   - 회원 관리 서비스 (Member Mangement Service) : 회원 가입, 로그인, 회원 정보 관리
   - 관리자 업무 서비스 (Admin Task Service) : 레시피 등록, 수정, 삭제
-  - 식재료 관리 서비스 (Ingredient Management Service) : 식재료 등록, 조회, 수정 삭제
+  - 식재료 관리 서비스 (Ingredient Management Service) : 식재료 등록, 조회, 수정,삭제
   - 유통기한 관리 서비스 (Expiration Confirmation Service) : 유통기한 임박 및 초과 재료 확인
   - 레시피 추천 서비스 (Recipe Recommendation Service) : 식재료 기반 레시피 추천, 레시피 저장
   - 식재료 소비 기록 서비스 (Ingredient Usage Log Service) : 식재료 소비 및 폐기 기록 확인
