@@ -301,6 +301,10 @@
 ![image](https://github.com/user-attachments/assets/bd5b9daf-5dc1-488a-bcfd-267c5edc7750)
 ![image](https://github.com/user-attachments/assets/c4eb1fd4-1771-4bc9-8388-581118e69935)
 
+### 식재료 소비 기록 기능
+![image](https://github.com/user-attachments/assets/ba92e925-003a-4105-8c51-c0724eff8e01)
+![image](https://github.com/user-attachments/assets/682c88ef-da06-442c-b485-002f7aac0d94)
+![image](https://github.com/user-attachments/assets/8657fe4f-a6b5-474a-a17f-095c062f1670)
 
 
 
