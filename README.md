@@ -98,7 +98,8 @@
 ---
 # ERD
 - 유스케이스 다이어그램
-![image](https://github.com/user-attachments/assets/8658dde5-97e5-4f53-aa3f-f39e008b3f0c)
+![image](https://github.com/user-attachments/assets/87cbf9cc-5984-40fd-872e-7751627b5f5f)
+
 
 - 논리 모델
 ![ERD1](https://github.com/user-attachments/assets/a50adeb5-9609-4517-a48e-9c1dbbed3435)
