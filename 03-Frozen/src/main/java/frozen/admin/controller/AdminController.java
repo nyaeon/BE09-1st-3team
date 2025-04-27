@@ -1,7 +1,7 @@
 package frozen.admin.controller;
 
-import frozen.admin.dto.AdminDTO;
 import frozen.admin.service.AdminService;
+import frozen.common.domain.Recipe;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -9,49 +9,46 @@ import java.util.Scanner;
 
 public class AdminController {
 
-    private final AdminService as;
+    private final AdminService as = new AdminService();
 
-    public AdminController() {
-        as = new AdminService();
-    }
+    public static void adminController() throws SQLException {
 
-    public static void main(String[] args) throws SQLException {
         AdminController ac = new AdminController();
         Scanner sc = new Scanner(System.in);
 
         String menu = """
-            === 관리자 업무 페이지 ===
+            =========== 관리자 업무 화면 ===========
             1. 레시피 등록
             2. 레시피 조회
             3. 레시피 수정
             4. 레시피 삭제
-            9. 메인 페이지로 이동
-            """;
+            0. 메인 화면으로 이동
+            ======================================
+            메뉴 번호를 입력해주세요 :""";
 
         while (true) {
-            System.out.println(menu);
-            System.out.print("메뉴 선택: ");
+            System.out.print(menu);
             int input = sc.nextInt();
             sc.nextLine();
 
             switch (input) {
                 case 1 -> {
-                    AdminDTO recipe = ac.getRecipeFromUser(sc);
+                    Recipe recipe = ac.getRecipeFromUser(sc);
                     ac.insertRecipe(recipe);
                 }
                 case 2 -> ac.selectAllRecipes();
                 case 3 -> ac.updateRecipeFlow(sc);
                 case 4 -> ac.deleteRecipeFlow(sc);
-                case 9 -> {
+                case 0 -> {
                     return;
                 }
-                default -> System.out.println("❗ 잘못된 메뉴 번호입니다. 다시 선택해 주세요.");
+                default -> System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요. ");
             }
         }
     }
 
     // 레시피 등록
-    public void insertRecipe(AdminDTO recipe) {
+    public void insertRecipe(Recipe recipe) {
         int result = as.insertRecipe(recipe);
 
         if (result > 0) {
@@ -63,7 +60,7 @@ public class AdminController {
 
     // 레시피 이름 목록 조회 후 상세 조회
     public void selectAllRecipes() {
-        List<AdminDTO> list = as.selectAllRecipes();
+        List<Recipe> list = as.selectAllRecipes();
 
         if (list.isEmpty()) {
             System.out.println("❌ 등록된 레시피가 없습니다.");
@@ -71,15 +68,15 @@ public class AdminController {
         }
 
         System.out.println("📖 등록된 레시피 이름 목록:");
-        for (AdminDTO recipe : list) {
-            System.out.println("- " + recipe.getMenuName());
+        for (Recipe recipe : list) {
+            System.out.println("- " + recipe.getName());
         }
 
         Scanner sc = new Scanner(System.in);
         System.out.print("\n🔍 상세 조회할 레시피 이름을 입력하세요: ");
         String name = sc.nextLine();
 
-        AdminDTO selectedRecipe = as.getRecipeByName(name);
+        Recipe selectedRecipe = as.getRecipeByName(name);
 
         if (selectedRecipe == null) {
             System.out.println("❌ 해당 이름의 레시피가 존재하지 않습니다.");
@@ -93,7 +90,7 @@ public class AdminController {
     public void updateRecipeFlow(Scanner sc) throws SQLException {
         System.out.print("🧻 수정할 레시피의 이름을 입력하세요: ");
         String oldName = sc.nextLine();
-        AdminDTO recipe = as.getRecipeByName(oldName);
+        Recipe recipe = as.getRecipeByName(oldName);
 
         if (recipe == null) {
             System.out.println("❌ 해당 레시피가 존재하지 않습니다.");
@@ -113,7 +110,7 @@ public class AdminController {
         switch (choice) {
             case 1 -> {
                 System.out.print("🔺 새 레시피 이름을 입력하세요: ");
-                recipe.setMenuName(sc.nextLine());
+                recipe.setName(sc.nextLine());
             }
             case 2 -> {
                 System.out.print("🔺 새 재료를 입력하세요: ");
@@ -161,7 +158,7 @@ public class AdminController {
     }
 
     // 레시피 입력 받기
-    private AdminDTO getRecipeFromUser(Scanner sc) {
+    private Recipe getRecipeFromUser(Scanner sc) {
         System.out.print("🔺 메뉴 이름: ");
         String name = sc.nextLine();
 
@@ -178,8 +175,8 @@ public class AdminController {
         int level = sc.nextInt();
         sc.nextLine();
 
-        AdminDTO recipe = new AdminDTO();
-        recipe.setMenuName(name);
+        Recipe recipe = new Recipe();
+        recipe.setName(name);
         recipe.setIngredients(ingredients);
         recipe.setMethod(method);
         recipe.setTime(time);

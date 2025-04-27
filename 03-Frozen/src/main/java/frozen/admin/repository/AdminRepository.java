@@ -1,6 +1,6 @@
 package frozen.admin.repository;
 
-import frozen.admin.dto.AdminDTO;
+import frozen.common.domain.Recipe;
 
 import java.sql.Connection;
 import java.io.FileInputStream;
@@ -16,7 +16,7 @@ import static frozen.common.JDBCTemplate.close;
 
 public class AdminRepository {
 
-    private List<AdminDTO> recipes;
+    private List<Recipe> recipes;
 
     private Properties prop;
 
@@ -31,14 +31,14 @@ public class AdminRepository {
     }
 
 
-    public int insertRecipe(Connection con, AdminDTO recipe) {
+    public int insertRecipe(Connection con, Recipe recipe) {
         int result = 0;
         PreparedStatement pstmt = null;
         String query = prop.getProperty("insertRecipe");
 
         try {
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, recipe.getMenuName());
+            pstmt.setString(1, recipe.getName());
             pstmt.setString(2, recipe.getIngredients());
             pstmt.setString(3, recipe.getMethod());
             pstmt.setString(4, recipe.getTime());
@@ -55,9 +55,9 @@ public class AdminRepository {
     }
 
 
-    public List<AdminDTO> selectAllRecipes(Connection con) {
+    public List<Recipe> selectAllRecipes(Connection con) {
 
-        List<AdminDTO> list = new ArrayList<>();
+        List<Recipe> list = new ArrayList<>();
         PreparedStatement pstmt = null;
         ResultSet rset = null;
 
@@ -68,8 +68,8 @@ public class AdminRepository {
             rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                AdminDTO recipe = new AdminDTO();
-                recipe.setMenuName(rset.getString("name"));
+                Recipe recipe = new Recipe();
+                recipe.setName(rset.getString("name"));
                 recipe.setIngredients(rset.getString("ingredients"));
                 recipe.setMethod(rset.getString("method"));
                 recipe.setTime(rset.getString("time"));
@@ -86,8 +86,8 @@ public class AdminRepository {
         return list;
     }
 
-    public AdminDTO selectRecipeByName(Connection con, String name) {
-        AdminDTO recipe = null;
+    public Recipe selectRecipeByName(Connection con, String name) {
+        Recipe recipe = null;
         PreparedStatement pstmt = null;
         ResultSet rset = null;
 
@@ -99,8 +99,8 @@ public class AdminRepository {
             rset = pstmt.executeQuery();
 
             if (rset.next()) {
-                recipe = new AdminDTO();
-                recipe.setMenuName(rset.getString("name"));
+                recipe = new Recipe();
+                recipe.setName(rset.getString("name"));
                 recipe.setIngredients(rset.getString("ingredients"));
                 recipe.setMethod(rset.getString("method"));
                 recipe.setTime(rset.getString("time"));
@@ -116,14 +116,14 @@ public class AdminRepository {
         return recipe;
     }
 
-    public int updateRecipe(Connection con, AdminDTO recipe, String oldName) {
+    public int updateRecipe(Connection con, Recipe recipe, String oldName) {
         int result = 0;
         PreparedStatement pstmt = null;
         String query = prop.getProperty("updateRecipe");
 
         try {
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, recipe.getMenuName());
+            pstmt.setString(1, recipe.getName());
             pstmt.setString(2, recipe.getIngredients());
             pstmt.setString(3, recipe.getMethod());
             pstmt.setString(4, recipe.getTime());

@@ -1,20 +1,18 @@
 
 package frozen.ingredient.service;
 
-
-
-import frozen.ingredient.Ingredient;
-import frozen.ingredient.repository.ingredientRepository;
+import frozen.common.domain.Ingredients;
+import frozen.ingredient.repository.IngredientRepository;
 
 import java.sql.Connection;
 import java.time.LocalDate;
 
 import static frozen.common.JDBCTemplate.*;
 
-public class ingredientService {
-    private final ingredientRepository ingredientRepository = new ingredientRepository();
+public class IngredientService {
+    private final IngredientRepository ingredientRepository = new IngredientRepository();
 
-    public void registIngredient(Ingredient ingredient,String userId) {
+    public void registIngredient(Ingredients ingredient,String userId) {
 
         Connection con = getConnection();
         int result = ingredientRepository.insertIngredient(con, ingredient,userId);
@@ -42,7 +40,7 @@ public class ingredientService {
         close(con);
     }
 
-    public void modifyIngredient(Ingredient modIng) {
+    public void modifyIngredient(Ingredients modIng) {
         Connection con = getConnection();
         int result = ingredientRepository.updateIngredient(con, modIng);
 
@@ -55,9 +53,9 @@ public class ingredientService {
         close(con);
     }
 
-    public Ingredient removeIngredient(String name, LocalDate date,String userId) {
+    public Ingredients removeIngredient(String name, LocalDate date,String userId) {
         Connection con = getConnection();
-        Ingredient ing = ingredientRepository.deleteIngredient(con, name, date,userId);
+        Ingredients ing = ingredientRepository.deleteIngredient(con, name, date,userId);
         if(ing == null){
             rollback(con);
             close(con);

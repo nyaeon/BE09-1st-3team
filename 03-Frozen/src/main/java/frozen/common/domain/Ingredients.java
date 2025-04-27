@@ -8,12 +8,16 @@ public class Ingredients {
     private int amount;
     private LocalDate expDate;
     private String location;
+    private int memNo;
 
     public Ingredients() {
     }
 
-    public Ingredients(String name) {
+    public Ingredients(String name, int amount, LocalDate expDate, String location) {
         this.name = name;
+        this.amount = amount;
+        this.expDate = expDate;
+        this.location = location;
     }
 
     public Ingredients(LocalDate expDate) {
@@ -52,13 +56,16 @@ public class Ingredients {
         this.location = location;
     }
 
+    public int getMemNo() {
+        return memNo;
+    }
+
+    public void setMemNo(int memNo) {
+        this.memNo = memNo;
+    }
+
     @Override
     public String toString() {
-        return "Expiration{" +
-                "name='" + name + '\'' +
-                ", amount=" + amount +
-                ", expDate=" + expDate +
-                ", location='" + location + '\'' +
-                '}';
+        return String.format("재료명: %-8s\t 수량: %-3d\t 보관 위치: %-2s\t 유통 기한: %s", name, amount, location, expDate);
     }
 }

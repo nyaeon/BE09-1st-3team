@@ -24,8 +24,13 @@ public class MemberController {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("회원가입을 시작합니다.");
-        System.out.print("아이디를 입력하세요: ");
-        String id = sc.nextLine();
+        String id = null;
+        while(true){
+            System.out.print("아이디를 입력하세요: ");
+            id = sc.nextLine();
+            if(!checkSignUp(id)) break;
+            else System.out.println("이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.");
+        }
         System.out.print("비밀번호를 입력하세요: ");
         String pwd = sc.nextLine();
         System.out.print("이름을 입력하세요: ");
@@ -51,11 +56,22 @@ public class MemberController {
         Member member = new Member(id, pwd, name, nickname, birth, gender, isAdmin);
         boolean isSignedUp = memService.signUp(member);
         if (isSignedUp) {
-            System.out.println("정상적으로 회원가입 되었습니다.");
+            System.out.println("정상적으로 회원가입이 되었습니다.");
         } else {
             System.out.println("회원가입 하는데 실패하였습니다. 다시 해주세요!");
         }
 
+    }
+
+    public static boolean checkSignUp(String id) {
+
+        boolean result = false;
+        Member mem = new Member(id);
+        Member resultMem = memService.getMemberInfo(mem);
+        if (resultMem != null) {
+            result = true;
+        }
+        return result;
     }
 
     // 로그인
@@ -63,7 +79,7 @@ public class MemberController {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("로그인 하세요.");
+        System.out.println("로그인이 진행됩니다.");
         System.out.print("아이디를 입력하세요: ");
         String id = sc.nextLine();
         System.out.print("비밀번호를 입력하세요: ");
@@ -73,7 +89,7 @@ public class MemberController {
 
         if (isLoggedIn) {
             // 로그인 성공 시 userId 설정
-            System.out.println("정상적으로 로그인 되었습니다. 메인 페이지로 이동합니다.");
+            System.out.println("정상적으로 로그인 되었습니다. 메인 화면으로 이동합니다.");
             boolean result = memService.isAdmin(id, password);
             userId = id; // userId 값을 설정하여 마이페이지에서 사용
             if (result) {
@@ -97,7 +113,7 @@ public class MemberController {
                 4. 관심 레시피 삭제
                 0. 메인 화면으로 이동
                 ======================================
-                메뉴를 선택해주세요 : """;
+                메뉴 번호를 입력해주세요 :""";
 
         Scanner sc = new Scanner(System.in);
         while (true) {
@@ -112,6 +128,8 @@ public class MemberController {
                 case 3: memController.viewFavoriteRecipes(); break;
                 case 4: memController.deleteFavoriteRecipe(); break;
                 case 0: return;
+                default:
+                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요.");
             }
         }
     }

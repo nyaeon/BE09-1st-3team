@@ -1,21 +1,20 @@
 package frozen.ingredientManagement.repository;
 
-import frozen.ingredientManagement.Management;
+import frozen.common.domain.Management;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 import static frozen.common.JDBCTemplate.close;
 
-public class managementRepository {
+public class ManagementRepository {
     private final Properties prop;
 
-    public managementRepository() {
+    public ManagementRepository() {
         prop = new Properties();
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/frozen/mapper/ManagementMapper.xml"));
@@ -88,7 +87,7 @@ public class managementRepository {
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getString("name"));
+                System.out.println(rs.getString("name") + " - 최근 한 달간 " + rs.getInt("amount") + "회 섭취");
             }
             return result;
         } catch (SQLException e) {

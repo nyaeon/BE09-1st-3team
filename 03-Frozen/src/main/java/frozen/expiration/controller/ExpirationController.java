@@ -1,8 +1,7 @@
 package frozen.expiration.controller;
 
 import frozen.common.domain.Ingredients;
-import frozen.expiration.service.ApproachService;
-import frozen.expiration.service.ExcessService;
+import frozen.expiration.service.ExpirationService;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -15,30 +14,23 @@ public class ExpirationController {
 
     public static void expireRun() {
 
-        ApproachService appService = new ApproachService();
-        ExcessService excService = new ExcessService();
-
-        LocalDate date = LocalDate.now();
-        Ingredients ing = new Ingredients(date);
-
+        Ingredients ing = new Ingredients(LocalDate.now());
         Scanner sc = new Scanner(System.in);
 
         String menu = """
-                ======================================
-                [유통기한 확인 페이지]
-                
+                ========== 유통기한 확인 화면 ===========
                 1. 유통기한 임박 재료 조회
                 2. 유통기한 초과 재료 조회
-                3. 메인 페이지로 이동
+                0. 메인 화면으로 이동
                 ======================================
-                원하는 메뉴 번호를 입력해주세요 :""";
+                메뉴 번호를 입력해주세요 :""";
 
         while (true){
             System.out.print(menu);
             int choice = sc.nextInt();
             switch (choice){
                 case 1: { // 유통기한 임박 식재료 조회
-                    List<Ingredients> approachResult = appService.searchApp(ing, userId);
+                    List<Ingredients> approachResult = ExpirationService.searchApp(ing, userId);
                     if (approachResult.isEmpty()) {
                         System.out.println("유통기한 임박 재료가 없습니다.");
                     } else {
@@ -52,7 +44,7 @@ public class ExpirationController {
                     break;
                 }
                 case 2: { // 유통기한 지난 식재료 조회
-                    List<Ingredients> excessResult = excService.searchExc(ing, userId);
+                    List<Ingredients> excessResult = ExpirationService.searchExc(ing, userId);
                     if (excessResult.isEmpty()) {
                         System.out.println("등록된 식재료 중 유통기한이 지난 항목은 없습니다.");
                     } else {
@@ -64,10 +56,10 @@ public class ExpirationController {
                     }
                     break;
                 }
-                case 3:
+                case 0:
                     return;
                 default:
-                    System.out.println("번호를 잘못 선택하셨습니다. 다시 입력해주세요.");
+                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요. ");
                     break;
             }
         }
