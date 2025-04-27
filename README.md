@@ -170,10 +170,10 @@
 - 모든 서비스는 독립적으로 개발되며, 각각 JDBC를 통해 데이터베이스에 직접 연결하여 데이터 처리를 수행합니다.
 - 시스템은 다음과 같은 마이크로서비스 개념을 참고하여 논리적으로 서비스들을 분리하여 구성됩니다.
   - 회원 관리 서비스 (Member Mangement Service) : 회원 가입, 로그인, 회원 정보 관리
+  - 관리자 업무 서비스 (Admin Task Service) : 레시피 등록, 수정, 삭제
   - 식재료 관리 서비스 (Ingredient Management Service) : 식재료 등록, 조회, 수정 삭제
   - 유통기한 관리 서비스 (Expiration Confirmation Service) : 유통기한 임박 및 초과 재료 확인
   - 레시피 추천 서비스 (Recipe Recommendation Service) : 식재료 기반 레시피 추천, 레시피 저장
-  - 관리자 업무 서비스 (Admin Task Service) : 레시피 등록, 수정, 삭제
   - 식재료 소비 기록 서비스 (Ingredient Usage Log Service) : 식재료 소비 및 폐기 기록 확인
 
 ## 2. 서비스 구성 및 정의
@@ -234,8 +234,50 @@
   - ```ManagementController.java```
   - ```ManagementService.java```
   - ```ManagementRepository.java```
-
-## 3. 서비스 연동 흐름도
+ 
+## 3. CRUD(Create, Read, Update, Delete)
+## 3-1. 회원 관리 서비스 (MemberService)
+| 데이터 대상 | 작업 | 메소드명 | 설명 |
+|:-----------|:----|:---------|:----|
+| Member | Create | `signUp(Member member)` | 회원 가입 |
+| Member | Read | `getMemberInfo(Member mem)` | 회원 정보 조회 |
+| Member | Update | `updateMemberInfo(Member member)` | 회원 정보 수정 |
+| Member | Delete | `deleteMemberInfo(String userId)` | 회원 탈퇴 |
+| FavoriteRecipe | Read | `showFavoriteRecipes(String userId)` | 관심 레시피 목록 조회 |
+| FavoriteRecipe | Delete | `deleteFavoriteRecipe(String userId, String recipeName)` | 관심 레시피 삭제 |
+## 3-2. 관리자 레시피 관리 서비스 (AdminService)
+| 데이터 대상 | 작업 | 메소드명 | 설명 |
+|:-----------|:----|:---------|:----|
+| Recipe | Create | `insertRecipe(Recipe recipe)` | 레시피 등록 |
+| Recipe | Read | `selectAllRecipes()` | 전체 레시피 목록 조회 |
+| Recipe | Read | `getRecipeByName(String name)` | 레시피 이름으로 조회 |
+| Recipe | Update | `updateRecipe(Recipe recipe, String oldName)` | 레시피 수정 |
+| Recipe | Delete | `deleteRecipe(String name)` | 레시피 삭제 |
+## 3-3. 식재료 관리 서비스 (IngredientService)
+| 데이터 대상 | 작업 | 메소드명 | 설명 |
+|:-----------|:----|:---------|:----|
+| Ingredients | Create | `registIngredient(Ingredients ingredient, String userId)` | 식재료 등록 |
+| Ingredients | Read | `checkIngredient(String userId)` | 식재료 재고 확인 |
+| Ingredients | Update | `modifyIngredient(Ingredients modIng)` | 식재료 정보 수정 |
+| Ingredients | Delete | `removeIngredient(String name, LocalDate date, String userId)` | 식재료 삭제 |
+## 3-4. 유통기한 확인 서비스 (ExpirationService)
+| 데이터 대상 | 작업 | 메소드명 | 설명 |
+|:-----------|:----|:---------|:----|
+| Ingredients | Read | `searchApp(Ingredients ing, String userId)` | 유통기한 임박 재료 조회 |
+| Ingredients | Read | `searchExc(Ingredients ing, String userId)` | 유통기한 초과 재료 조회 |
+## 3-5. 레시피 추천 서비스 (RecommendService)
+| 데이터 대상 | 작업 | 메소드명 | 설명 |
+|:-----------|:----|:---------|:----|
+| Ingredients | Read | `searchIng(String userId)` | 등록된 식재료 조회 |
+| Recipe | Read | `searchRecipe(Recipe recipe)` | 레시피 검색 |
+| FavoriteRecipe | Create | `saveRecipe(String recipeName)` | 관심 레시피 저장 |
+## 3-6. 식재료 소비 기록 서비스 (ManagementService)
+| 데이터 대상 | 작업 | 메소드명 | 설명 |
+|:-----------|:----|:---------|:----|
+| Management | Update | `updateDelete(Management menu)` | 식재료 소비/폐기 기록 업데이트 |
+| Management | Read | `serchIngredient(String id)` | 폐기된 재료 조회 |
+| Management | Read | `oftenconsumIngredient(String id)` | 자주 소비한 재료 조회 |
+## 4. 서비스 연동 흐름도
 - 사용자는 회원 가입 및 로그인을 통해 인증 완료
 - 인증된 사용자는 식재료 추가 및 조회 기능 이용
 - 시스템은 유통기한 임박 재료를 식별하여 알림 제공
