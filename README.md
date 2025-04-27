@@ -21,8 +21,7 @@
 ### 식재료 등록 페이지
 ![image](https://github.com/user-attachments/assets/1d1b702e-ec8b-4376-9ddb-f9b6cc2a936c)
 <br>
-### 유통기한 만료 
-유통기한 확인 페이지
+### 유통기한 확인 페이지
 <br>
 
 2. 만개의 레시피
