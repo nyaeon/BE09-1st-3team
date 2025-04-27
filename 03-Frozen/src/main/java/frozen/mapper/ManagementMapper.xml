@@ -13,10 +13,11 @@
         VALUES ( ? , ? , ? , ?, ? )
     </entry>
     <entry key="checkOften">
-        SELECT name
+        SELECT name, amount
         FROM exp_ingredients
         WHERE reason = 1
         AND amount >= 4
         AND memNo = (SELECT memNo FROM members WHERE id = ? )
+        AND delDate >=  CURDATE() - INTERVAL 1 MONTH
     </entry>
 </properties>

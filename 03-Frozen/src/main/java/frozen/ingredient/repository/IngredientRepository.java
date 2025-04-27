@@ -1,9 +1,6 @@
 package frozen.ingredient.repository;
 
-
-
-
-import frozen.ingredient.Ingredient;
+import frozen.common.domain.Ingredients;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,10 +10,10 @@ import java.util.Properties;
 
 import static frozen.common.JDBCTemplate.*;
 
-public class ingredientRepository {
+public class IngredientRepository {
     private final Properties prop;
 
-    public ingredientRepository() {
+    public IngredientRepository() {
         prop = new Properties();
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/frozen/mapper/IngredientMapper.xml"));
@@ -25,7 +22,7 @@ public class ingredientRepository {
         }
     }
 
-    public int insertIngredient(Connection con, Ingredient ingred,String id) {
+    public int insertIngredient(Connection con, Ingredients ingred,String id) {
 
         PreparedStatement pstmt = null;
         int result = 0;
@@ -34,9 +31,9 @@ public class ingredientRepository {
 
             String sql = prop.getProperty("insertIngredient");
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, ingred.getIngredientName());
+            pstmt.setString(1, ingred.getName());
             pstmt.setInt(2, ingred.getAmount());
-            pstmt.setDate(3, Date.valueOf(ingred.getDeadLine()));
+            pstmt.setDate(3, Date.valueOf(ingred.getExpDate()));
             pstmt.setString(4, ingred.getLocation());
             pstmt.setString(5, id);
 
@@ -53,7 +50,7 @@ public class ingredientRepository {
     public int checkIngredient(Connection con,String id) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        Ingredient ing = null;
+        Ingredients ing = null;
         int result = 0;
         try {
             String sql = prop.getProperty("checkIngredient");
@@ -61,10 +58,10 @@ public class ingredientRepository {
             pstmt.setString(1, id);
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                ing = new Ingredient();
-                ing.setIngredientName(rs.getString("name"));
+                ing = new Ingredients();
+                ing.setName(rs.getString("name"));
                 ing.setAmount(rs.getInt("amount"));
-                ing.setDeadLine(LocalDate.parse(rs.getString("expDate")));
+                ing.setExpDate(LocalDate.parse(rs.getString("expDate")));
                 ing.setLocation(rs.getString("location"));
 
                 System.out.println(ing.toString());
@@ -78,7 +75,7 @@ public class ingredientRepository {
         return result;
     }
 
-    public int updateIngredient(Connection con, Ingredient modifyIng) {
+    public int updateIngredient(Connection con, Ingredients modifyIng) {
 
         PreparedStatement pstmt = null;
         int result = 0;
@@ -87,10 +84,10 @@ public class ingredientRepository {
             String sql = prop.getProperty("updateIngredient");
 
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, modifyIng.getIngredientName());
-            pstmt.setInt(2, modifyIng.getAmount());
-            pstmt.setDate(3, Date.valueOf(modifyIng.getDeadLine()));
-            pstmt.setString(4, modifyIng.getLocation());
+            pstmt.setInt(1, modifyIng.getAmount());
+            pstmt.setDate(2, Date.valueOf(modifyIng.getExpDate()));
+            pstmt.setString(3, modifyIng.getLocation());
+            pstmt.setString(4, modifyIng.getName());
 
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -102,8 +99,8 @@ public class ingredientRepository {
         return result;
     }
 
-    public Ingredient deleteIngredient(Connection con, String ingredientName, LocalDate expDate,String userId) {
-        Ingredient ing = null;
+    public Ingredients deleteIngredient(Connection con, String ingredientName, LocalDate expDate,String userId) {
+        Ingredients ing = null;
         PreparedStatement pstmt = null;
         PreparedStatement pstmt2 = null;
         ResultSet rs = null;
@@ -119,8 +116,8 @@ public class ingredientRepository {
             pstmt2.setString(3,userId);
             rs = pstmt2.executeQuery();
             if (rs.next()) {
-                ing = new Ingredient();
-                ing.setIngredientName(rs.getString("name"));
+                ing = new Ingredients();
+                ing.setName(rs.getString("name"));
                 ing.setAmount(rs.getInt("amount"));
                 ing.setMemNo(rs.getInt("memNo"));
             }

@@ -1,7 +1,7 @@
 package frozen.admin.service;
 
-import frozen.admin.dto.AdminDTO;
 import frozen.admin.repository.AdminRepository;
+import frozen.common.domain.Recipe;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ public class AdminService {
     private final AdminRepository ar = new AdminRepository();
 
 
-    public int insertRecipe(AdminDTO recipe) {
+    public int insertRecipe(Recipe recipe) {
 
         Connection con = getConnection();
 
@@ -33,18 +33,18 @@ public class AdminService {
         return result;
     }
 
-    public List<AdminDTO> selectAllRecipes() {
+    public List<Recipe> selectAllRecipes() {
 
         Connection con = getConnection();
 
-        List<AdminDTO> recipes = ar.selectAllRecipes(con);
+        List<Recipe> recipes = ar.selectAllRecipes(con);
 
         close(con);
 
         return recipes;
     }
 
-    public AdminDTO getRecipeByName(String name) {
+    public Recipe getRecipeByName(String name) {
         try (Connection con = getConnection()) {
             return ar.selectRecipeByName(con, name);
         } catch (SQLException e) {
@@ -55,13 +55,13 @@ public class AdminService {
         }
     }
 
-    public int updateRecipe(AdminDTO recipe, String oldName)  {
+    public int updateRecipe(Recipe recipe, String oldName)  {
         Connection con = null;
         try {
             con = getConnection();
             con.setAutoCommit(false);
 
-            AdminDTO existingRecipe = ar.selectRecipeByName(con, oldName);
+            Recipe existingRecipe = ar.selectRecipeByName(con, oldName);
             if (existingRecipe == null) {
                 return -1;
             }

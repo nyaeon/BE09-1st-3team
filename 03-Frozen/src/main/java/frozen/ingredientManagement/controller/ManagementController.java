@@ -1,22 +1,23 @@
 package frozen.ingredientManagement.controller;
 
-import frozen.ingredientManagement.service.managemenntService;
+import frozen.ingredientManagement.service.ManagementService;
 
 import java.util.Scanner;
 
 import static frozen.member.controller.MemberController.userId;
 
-public class manaIngCon {
+public class ManagementController {
     public static void ingredientManagement() {
-        managemenntService managementService = new managemenntService();
+        ManagementService managementService = new ManagementService();
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("""
-                    ==============================
+            System.out.print("""
+                    ========= 식재료 소비 기록 화면 =========
                     1. 폐기 식재료 확인
                     2. 자주 소비하는 식재료 확인
-                    ==============================
-                    번호입력:""");
+                    0. 메인 화면으로 이동
+                    ======================================
+                    메뉴 번호를 입력해주세요 :""");
             int select = sc.nextInt();
             switch (select) {
                 case 1:
@@ -25,9 +26,11 @@ public class manaIngCon {
                 case 2:
                     managementService.oftenconsumIngredient(userId);
                     break;
+                case 0:
+                    return;
                 default:
-                    System.out.println("숫자를 다시 입력해주세요.");
-                    ;
+                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요. ");
+;
             }
         }
     }

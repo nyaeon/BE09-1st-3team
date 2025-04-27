@@ -1,8 +1,9 @@
-package frozen.ingredientManagement;
+package frozen.common.domain;
 
 import java.time.LocalDate;
 
 public class Management {
+
     private LocalDate date;
     private int reason;
     private int amount;
@@ -63,6 +64,6 @@ public class Management {
 
     @Override
     public String toString() {
-        return "["  + name + " " + reason + " 폐기량 :  " + amount + " 폐기일 : " + date +  ']';
+        return String.format("[식재료명 : %-8s\t 폐기량: %2d\t 폐기일: %s]", name, amount, date.toString());
     }
 }

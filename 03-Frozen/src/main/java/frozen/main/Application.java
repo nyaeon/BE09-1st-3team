@@ -2,8 +2,8 @@ package frozen.main;
 
 import frozen.admin.controller.AdminController;
 import frozen.expiration.controller.ExpirationController;
-import frozen.ingredient.controller.ingCon;
-import frozen.ingredientManagement.controller.manaIngCon;
+import frozen.ingredient.controller.IngredientController;
+import frozen.ingredientManagement.controller.ManagementController;
 import frozen.recommendation.controller.RecommendController;
 import frozen.member.controller.MemberController;
 
@@ -35,7 +35,7 @@ public class Application {
                     break;
                 case 0: return;
                 default:
-                    System.out.println("잘못된 번호를 입력하셨습니다.");
+                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요. ");
             }
 
         }
@@ -45,7 +45,7 @@ public class Application {
 
         Scanner sc = new Scanner(System.in);
 
-        // 메인 메뉴 (일반 사용자 ver)
+        // 메인 화면 (일반 사용자 ver)
         String mainMenu = """
                 ============== 메인 화면 ==============
                 1. 식재료 관리
@@ -55,20 +55,21 @@ public class Application {
                 5. 마이페이지
                 0. 로그아웃
                 ======================================
-                메뉴를 선택해주세요 : """;
+                메뉴 번호를 입력해주세요 :""";
 
         while (true){
             System.out.print(mainMenu);
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1: ingCon.ingredient();break;
+                case 1: IngredientController.ingredient();break;
                 case 2: ExpirationController.expireRun(); break;
                 case 3: RecommendController.recommendController(); break;
-                case 4: manaIngCon.ingredientManagement(); break;
+                case 4: ManagementController.ingredientManagement(); break;
                 case 5: MemberController.myPage(); break;
                 case 0: return;
-                default: break;
+                default:
+                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요. ");
             }
         }
     }
@@ -77,7 +78,7 @@ public class Application {
 
         Scanner sc = new Scanner(System.in);
 
-        // 메인 메뉴 (관리자 ver)
+        // 메인 화면 (관리자 ver)
         String mainMenu = """
                 ============== 메인 화면 ==============
                 1. 식재료 관리
@@ -88,31 +89,31 @@ public class Application {
                 6. 관리자 업무
                 0. 로그아웃
                 ======================================
-                메뉴를 선택해주세요 : """;
+                메뉴 번호를 입력해주세요 :""";
 
         while (true){
             System.out.print(mainMenu);
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1: ingCon.ingredient();break;
+                case 1: IngredientController.ingredient();break;
                 case 2: ExpirationController.expireRun(); break;
                 case 3: RecommendController.recommendController(); break;
-                case 4: manaIngCon.ingredientManagement(); break;
+                case 4: ManagementController.ingredientManagement(); break;
                 case 5: MemberController.myPage(); break;
-                case 6: showAdminMenu(); break;
+                case 6:
+                    try {
+                        AdminController.adminController();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        System.out.println("❌ 데이터베이스 오류가 발생했습니다.");
+                    }
+                    break;
                 case 0: return;
-                default: break;
+                default:
+                    System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력해주세요. ");
             }
         }
     }
 
-    private static void showAdminMenu() {
-        try {
-            AdminController.main(new String[0]);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("❌ 데이터베이스 오류가 발생했습니다.");
-        }
-    }
 }

@@ -1,14 +1,14 @@
 package frozen.ingredientManagement.service;
 
-import frozen.ingredientManagement.Management;
-import frozen.ingredientManagement.repository.managementRepository;
+import frozen.common.domain.Management;
+import frozen.ingredientManagement.repository.ManagementRepository;
 
 import java.sql.Connection;
 
 import static frozen.common.JDBCTemplate.*;
 
-public class managemenntService {
-    managementRepository managementRepo = new managementRepository();
+public class ManagementService {
+    ManagementRepository managementRepo = new ManagementRepository();
 
 
     public void updateDelete(Management menu) {

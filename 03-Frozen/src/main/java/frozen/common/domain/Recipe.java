@@ -17,6 +17,14 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public Recipe(String name, String ingredients, String method, String time, int level) {
+        this.name = name;
+        this.ingredients = ingredients;
+        this.method = method;
+        this.time = time;
+        this.level = level;
+    }
+
     public String getName() {
         return name;
     }
@@ -59,12 +67,13 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return "Recipe{" +
-                "name='" + name + '\'' +
-                ", ingredients='" + ingredients + '\'' +
-                ", method=" + method +
-                ", time='" + time + '\'' +
-                ", level=" + level +
-                '}';
+        return "📋 메뉴 이름: " + name +
+                "\n🌿 재료: " + ingredients +
+                "\n==============================" +
+                "\n📖🍳🥚️️️☁️ 조리 방법 ☁️🥚🍳📖\n" + method +
+                "\n==============================" +
+                "\n⏱️ 조리 시간: " + time +
+                "\n⭐ 난이도: ★" + level +
+                "\n------------------------------------------------------";
     }
 }
