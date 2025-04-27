@@ -11,7 +11,7 @@
 | [GitHub](https://github.com/nyaeon) | [GitHub](https://github.com/NYoungLEE) | [GitHub](https://github.com/LimHub) | [GitHub](https://github.com/changjunpark13) |
 ---
 # 목적 및 배경
-- "냉장GO" 프로젝트의 목적은 사용자가 식재료를 효율적으로 관리하고, 유통기한에 따른 소비 패턴을 분석하여 낭비를 최소화하며, 다양한 레시피를 통해 식재료를 유용하게 활용할 수 있도록 돕는 것입니다. 이 시스템은 냉장고에 보관된 식재료의 정보를 체계적으로 관리하고, 유통기한 임박 또는 유통기한이 지난 재료를 빠르게 확인하며, 사용자가 선호하는 레시피를 추천하고, 소비 패턴에 맞는 알림을 제공합니다. 또한, 사용자 계정 관리 기능을 통해 개인 맞춤형 서비스를 제공하여, 전반적인 식생활의 효율성을 높이는 데 기여하고자 합니다.
+- "냉장GO" 프로젝트의 목적은 사용자가 식재료를 효율적으로 관리하고, 유통기한에 따른 소비 패턴을 분석하여 낭비를 최소화하며, 다양한 레시피를 통해 식재료를 유용하게 활용할 수 있도록 돕는 것입니다. 이 시스템은 냉장고에 보관된 식재료의 정보를 체계적으로 관리하고, 유통기한 임박 또는 유통기한이 지난 재료를 빠르게 확인하며, 사용자에게 보관된 식재료를 바탕으로 레시피를 추천하고, 소비 패턴 정보를 제공합니다. 또한, 사용자 계정 관리 기능을 통해 개인 맞춤형 서비스를 제공하여, 전반적인 식생활의 효율성을 높이는 데 기여하고자 합니다.
 
 - 최근 식품 소비에서의 낭비 문제는 큰 사회적 이슈로 떠오르고 있습니다. 많은 사람들이 식재료를 구입한 후 보관 상태나 유통기한을 제대로 확인하지 않아 불필요하게 폐기되는 경우가 많습니다. 이를 해결하기 위해, "냉장GO" 프로젝트는 식재료를 체계적으로 관리하고, 사용자가 유통기한을 쉽게 확인할 수 있도록 도와주는 시스템을 제공합니다. 또한, 사용자에게 적합한 레시피를 추천하고, 과도한 소비나 낭비를 방지하는 알림 기능을 제공하여, 더욱 효율적이고 건강한 식생활을 지원하는 서비스입니다.
 본 프로젝트는 사용자가 자신의 식재료를 관리하고, 이를 기반으로 필요한 레시피를 추천받는 방식으로, 식품의 낭비를 줄이고, 사용자에게 실용적인 도움을 제공하는 것을 목표로 합니다. 이를 통해 식품 관리의 편리함을 제공하고, 환경적으로도 긍정적인 영향을 미칠 수 있습니다.
@@ -79,22 +79,22 @@
 본 프로젝트에서는 다음과 같은 주요 서비스를 구현했습니다.
 
 - 회원 관리 서비스:
-  - 신규 사용자는 회원 가입을 통해 계정을 생성하고, 기존 사용자는 로그인하여 개인 정보를 관리할 수 있습니다. 또한, 사용자는 관심 있는 레시피를 저장하고, 마이페이지에서 회원 정보를 수정하거나 삭제할 수 있습니다.
+  - 신규 사용자는 회원 가입을 통해 계정을 생성하고, 기존 사용자는 로그인하여 개인 정보를 관리할 수 있습니다. 또한, 사용자는 마이페이지에서 저장된 관심 있는 레시피를 확인하고, 회원 정보를 수정하거나 삭제할 수 있습니다.
 
 - 관리자 업무 서비스:
   - 관리자는 새로운 레시피를 등록하고, 기존 레시피의 정보를 수정하거나 삭제할 수 있습니다. 이를 통해 서비스에 제공되는 레시피를 지속적으로 업데이트하고 관리할 수 있습니다.
 
 - 식재료 관리 서비스:
-  - 사용자는 새 식재료를 냉장고에 추가하거나, 기존의 식재료를 수정하고 삭제할 수 있습니다. 이 기능을 통해 식재료의 이름, 수량, 유통기한, 보관 위치 등을 관리하며, 냉장고 내 식재료를 효율적으로 정리할 수 있습니다.
+  - 사용자는 새 식재료를 냉장고에 추가하거나, 기존의 식재료를 수정하고 삭제할 수 있습니다. 이 기능을 통해 식재료의 이름, 수량, 유통기한, 보관 위치 등을 확인하여 냉장고 내 식재료를 효율적으로 관리할 수 있습니다.
 
 - 유통기한 확인 서비스:
-  - 유통기한이 임박한 재료를 확인하고, 유통기한이 지난 재료를 관리할 수 있습니다. 이를 통해 사용자는 음식물 쓰레기를 줄이고, 제때 소비할 수 있는 재료를 확인하여 식재료의 낭비를 방지할 수 있습니다.
+  - 유통기한이 임박한 재료 또는 유통기한이 지난 재료를 확인하여 식재료를 관리할 수 있습니다. 이를 통해 사용자는 음식물 쓰레기를 줄이고, 제때 소비할 수 있는 재료를 확인하여 식재료의 낭비를 방지할 수 있습니다.
 
 - 추천 레시피 확인 서비스:
-  - 사용자가 냉장고에 보유한 재료를 기반으로 레시피를 추천하거나, 관리자가 새 레시피를 추가하여 제공할 수 있습니다. 이 기능을 통해 사용자는 냉장고 속 재료를 활용한 다양한 요리법을 쉽게 찾아볼 수 있습니다.
+  - 사용자가 냉장고에 보유한 재료를 기반으로 레시피를 추천받고 해당 레시피를 관심 레시피로 저장할 수 있습니다. 이 기능을 통해 사용자는 냉장고 속 재료를 활용한 다양한 요리법을 쉽게 찾아볼 수 있습니다.
 
 - 식재료 소비 기록 서비스:
-  - 사용자가 유통기한 초과로 폐기된 재료를 확인하거나, 한 달 간 섭취된 재료의 소비 패턴을 조회할 수 있습니다. 이를 통해 재료의 소비 패턴을 분석하고, 낭비를 줄이기 위한 알림을 받을 수 있습니다.
+  - 사용자가 유통기한 초과로 폐기된 재료 또는 한 달간 자주 섭취한 재료를 확인하여 사용자의 소비 습관을 확인할 수 있습니다.
 ---
 # ERD
 - 유스케이스 다이어그램
@@ -102,25 +102,28 @@
 
 
 - 논리 모델
-![ERD1](https://github.com/user-attachments/assets/a50adeb5-9609-4517-a48e-9c1dbbed3435)
+![image](https://github.com/user-attachments/assets/7666a4ae-0106-464b-ba59-aa0377522fbc)
+
 
 - 물리 모델
-![ERD2](https://github.com/user-attachments/assets/ac03b371-dbda-4a37-9c18-6ce2574f25f8)
+![image](https://github.com/user-attachments/assets/d1f00d56-3b2f-4515-af39-b70b3e89795b)
+
 ---
 # 요구사항 정의서
 📌 **기능적 요구사항**
 - 식재료 관리
   - 재료 추가: 식재료 이름, 수량, 유통기한, 보관 위치(냉장/냉동/실온) 입력
-  - 재료 조회: 전체 식재료 목록 확인 (정렬 가능: 이름, 수량, 유통기한 임박 순, 보관 위치)
+  - 재료 조회: 전체 식재료 목록 확인
   - 재료 수정: 기존 재료의 정보 변경
   - 재료 삭제: 섭취 완료 또는 유통기한 초과로 인한 삭제
 
 - 유통기한 확인
-  - 임박 재료 확인: 유통기한이 오늘 ~ 3일 후까지인 재료 목록
+  - 임박 재료 확인: 유통기한이 금일 ~ 3일 후까지인 재료 목록
   - 기한 초과 재료 확인: 유통기한이 지난 재료 목록
 
 - 추천 레시피 확인
   - 재료 기반 레시피 추천: 냉장고에 등록된 식재료를 기반으로 레시피를 추천
+  - 관심 레시피로 등록
 
 - 식재료 소비 기록
   - 폐기 기록: 최근 한 달간 유통기한 초과로 폐기된 재료 확인
@@ -164,12 +167,12 @@
 # MSA설계서
 ## 1. 시스템 개요
 - "냉장GO" 식재료 관리와 유통기한 알림 시스템은 마이크로서비스 아키텍처(MSA)를 기반으로 사용자 계정 관리, 식재료 관리, 레시피 추천, 유통기한 관리, 식재료 소비 기록 등을 분산 처리하는 시스템입니다.
-- 모든 서비스는 독립적으로 개발 및 배포 가능하며, RESTful API를 통해 통신합니다.
-- 시스템은 다음과 같은 마이크로서비스로 구성됩니다.
+- 모든 서비스는 독립적으로 개발되며, 각각 JDBC를 통해 데이터베이스에 직접 연결하여 데이터 처리를 수행합니다.
+- 시스템은 다음과 같은 마이크로서비스 개념을 참고하여 논리적으로 서비스들을 분리하여 구성됩니다.
   - 회원 관리 서비스 (Member Mangement Service) : 회원 가입, 로그인, 회원 정보 관리
   - 식재료 관리 서비스 (Ingredient Management Service) : 식재료 등록, 조회, 수정 삭제
   - 유통기한 관리 서비스 (Expiration Confirmation Service) : 유통기한 임박 및 초과 재료 확인
-  - 레시피 추천 서비스 (Recipe Recommendation Service) : 식재료 기반 레시피 추천
+  - 레시피 추천 서비스 (Recipe Recommendation Service) : 식재료 기반 레시피 추천, 레시피 저장
   - 관리자 업무 서비스 (Admin Task Service) : 레시피 등록, 수정, 삭제
   - 식재료 소비 기록 서비스 (Ingredient Usage Log Service) : 식재료 소비 및 폐기 기록 확인
 
@@ -179,7 +182,7 @@
 - 책임:
   - 사용자 계정 등록 및 인증
   - 회원 정보 조회 및 수정
-  - 관심 레시피 관리
+  - 관심 레시피 관리(조회 및 삭제)
 - 구성 요소:
   - ```MemberController.java```
   - ```MemberService.java```
@@ -188,28 +191,26 @@
 - 역할: 식재료 등록, 조회, 수정, 삭제
 - 책임:
   - 식재료 이름, 수량, 유통기한, 보관 위치 등록
-  - 식재료 목록 조회 (정렬 기능 포함)
+  - 식재료 목록 조회
   - 식재료 정보 수정 및 삭제
 - 구성 요소:
-  - ```ingCon.java```
+  - ```IngredientController.java```
   - ```ingredientService.java```
   - ```ingredientRepository.java```
 ### 2.3 유통기한 관리 서비스 (Expiration Confirmation Service)
 - 역할: 유통기한 임박 및 초과 재료 확인
 - 책임:
-  - 유통기한 임박 재료 목록 제공 (오늘~3일 후)
+  - 유통기한 임박 재료 목록 제공 (금일~3일 후)
   - 유통기한 초과 재료 목록 제공
 - 구성 요소:
   - ```ExpirationController.java```
-  - ```ApproachService.java```
-  - ```ExcessService.java```
-  - ```ApproachRepository.java```
-  - ```ExcessRepository.java```
+  - ```ExpirationService.java```
+  - ```ExpirationRepository.java```
 ### 2.4 레시피 추천 서비스 (Recipe Recommendation Service)
 - 역할: 식재료 기반 레시피 추천
 - 책임:
   - 등록된 식재료를 기반으로 레시피 추천
-  - 추천된 레시피 목록 제공
+  - 추천 레시피를 관심 레시피로 등록
 - 구성 요소:
   - ```RecommendController.java```
   - ```RecommendService.java```
@@ -230,37 +231,11 @@
   - 폐기된 재료 기록
   - 섭취 패턴 분석 (한 달간 4회 이상 섭취 재료 표시)
 - 구성 요소:
-  - ```managementService.java```
-  - ```managementRepository.java```
-  - ```Management.java```
- 
-## 3. API
-### 회원 관리
-- POST ```/member/signup``` - 회원 가입
-- POST ```/member/login``` - 로그인
-- GET ```/member/mypage``` - 회원 정보 조회
-- PUT ```/member/update``` - 회원 정보 수정
-- DELETE ```/member/delete``` - 회원 탈퇴
-### 식재료 관리
-- POST ```/ingredient/add``` - 식재료 추가
-- GET ```/ingredient/list``` - 식재료 목록 조회
-- PUT ```/ingredient/update``` - 식재료 수정
-- DELETE ```/ingredient/delete``` - 식재료 삭제
-### 유통기한 관리
-- GET ```/expiration/near``` - 임박 식재료 조회
-- GET ```/expiration/expired``` - 유통기한 초과 식재료 조회
-### 레시피 추천
-- GET ```/recommend/recipes``` - 추천 레시피 조회
-### 관리자 기능
-- POST ```/admin/recipe/add``` - 레시피 등록
-- PUT ```/admin/recipe/update``` - 레시피 수정
-- DELETE ```/admin/recipe/delete``` - 레시피 삭제
-- GET ```/admin/recipe/list``` - 전체 레시피 목록 조회
-### 소비 기록 관리
-- GET ```/usage/history``` - 소비 기록 조회
-- GET ```/usage/pattern``` - 섭취 패턴 분석
+  - ```ManagementController.java```
+  - ```ManagementService.java```
+  - ```ManagementRepository.java```
 
-## 4. 서비스 연동 흐름도
+## 3. 서비스 연동 흐름도
 - 사용자는 회원 가입 및 로그인을 통해 인증 완료
 - 인증된 사용자는 식재료 추가 및 조회 기능 이용
 - 시스템은 유통기한 임박 재료를 식별하여 알림 제공
@@ -273,42 +248,51 @@ https://www.notion.so/coffit23/075698acf1c24ce7878d840a9aac30d9
 # 스토리보드
 ### 로그인 기능
 
-![image](https://github.com/user-attachments/assets/629d03f6-2b07-4b73-8388-75078593e8d0)
-![image](https://github.com/user-attachments/assets/17025f7a-1104-4612-a747-55140a9454e3)
+![{91F2EA15-DA17-4C41-A73C-7FC81FB951DD}](https://github.com/user-attachments/assets/ead9c26c-9fb4-4bd6-a163-a4116432a80e)
 
-### 마이페이지 기능
-![image](https://github.com/user-attachments/assets/68193d04-3cd3-44dc-8453-d4f62e218e9e)
+### 메인 화면
 
+![{ABA0ABE5-4186-4A86-854F-DADA17D45345}](https://github.com/user-attachments/assets/d6288df2-cbf9-4d1c-86e2-64cd49ca4e49)
 
 ### 식재료 관리 기능
 
-![image](https://github.com/user-attachments/assets/c24514e2-c390-451f-af28-392b318127c8)
-![image](https://github.com/user-attachments/assets/7fc606e8-ef97-40cd-9f17-f47e3c9a8394)
-![image](https://github.com/user-attachments/assets/dbdaa230-aea9-4a11-9c16-f9d43a990fe8)
-![image](https://github.com/user-attachments/assets/1fc5cc44-90f1-435a-adc2-244a327e5282)
-![image](https://github.com/user-attachments/assets/ee46b84d-bac5-4b33-aff0-004b487e5ff6)
+![{E48EB039-0359-4A49-AB07-7ADD78E40B72}](https://github.com/user-attachments/assets/308c14ee-e104-4666-b6f8-1eeb5e8077f9)
+![{E5E26A7B-9BD9-4D2D-B47E-B741FF921DF1}](https://github.com/user-attachments/assets/b1c6657a-3bb6-498a-ab9c-d0182c5409bf)
+![{82C15F86-9AFA-415A-9F27-10D93E39D280}](https://github.com/user-attachments/assets/24bf7ed1-f5e7-4a7f-a150-dc1ec99229cf)
+![{D719D5DD-7218-4CA0-AD29-47AE680C633E}](https://github.com/user-attachments/assets/9365f376-9bfa-4b3c-ad7b-1fba090da677)
+![{FADFFB2A-429B-4449-BD3C-005B8D28A91B}](https://github.com/user-attachments/assets/5bd36f46-f29c-4d94-9d6f-abd16a7c64a1)
+
+### 유통기한 확인 기능
+
+![{C8850723-DEB7-4465-BD7A-E007E4DD678A}](https://github.com/user-attachments/assets/a9749025-187f-4b8f-a0ab-72fc24833de6)
+![{4B4E9A71-2651-46F4-A925-7D400E7231E8}](https://github.com/user-attachments/assets/256b58b4-ec23-4ce7-8df9-4b6496223ad0)
+
+### 추천 레시피 확인 기능
+
+![{0D4ABA2D-6AF9-4D44-AE30-89247E821F4A}](https://github.com/user-attachments/assets/b78af300-3a44-45f9-be3a-98d77ced2e96)
+![{861AEEA9-6611-499E-975E-3AE1BC720704}](https://github.com/user-attachments/assets/6b68aa06-932d-4a6f-892f-416c64765aba)
+
+### 식재료 소비 기록 기능
+
+![{D14E161D-75D5-403E-ACBE-7BD035124B54}](https://github.com/user-attachments/assets/821139e4-7a51-4117-abea-67673b70cc35)
+![{F45CB302-0432-4F9C-8409-00A525DA31F9}](https://github.com/user-attachments/assets/c19fee24-0ade-4ec1-b515-dd858ae0659b)
+
+
+### 마이페이지 기능
+
+![{96E71C5A-8E23-4625-8B5D-D603867373F3}](https://github.com/user-attachments/assets/cdac5170-d0b3-418a-a2ad-e9a1d6608937)
+![{B75599C4-A9EB-4ADD-9FB0-4AE157314CE6}](https://github.com/user-attachments/assets/d850773a-5d0e-45b7-a144-dc995e0bc69b)
+![{088F0A8A-B598-4D07-A970-ACECD2205195}](https://github.com/user-attachments/assets/0091994d-087f-49f5-8528-e470bfb29d0b)
+![{5F72221C-9EAF-4A23-BC38-594F11ACCD69}](https://github.com/user-attachments/assets/2681dfab-896e-4dfb-8a4a-905c958f99db)
+![{692E0618-9951-44E8-8B53-78F49CE567C8}](https://github.com/user-attachments/assets/7e6791ce-92cd-46ac-aa56-16925205422e)
+
 
 ### 관리자 업무 기능
 
-![image](https://github.com/user-attachments/assets/f27f3868-34b5-480c-be43-de5cc3386cf7)
-![image](https://github.com/user-attachments/assets/4e015b19-a9ae-489c-aa64-f6869520c9f4)
-![image](https://github.com/user-attachments/assets/49917974-ebd0-4833-8317-dec6649f16cd)
-![image](https://github.com/user-attachments/assets/deaa6782-3e5a-4fc5-bd4d-660134109e9d)
-![image](https://github.com/user-attachments/assets/09b7353a-21e0-4447-bc98-edff73d4c0ad)
-
-### 유통기한 확인 기능
-![image](https://github.com/user-attachments/assets/0c73134b-4584-4d1a-8aba-2a6debdc1a6d)
-![image](https://github.com/user-attachments/assets/bd5b9daf-5dc1-488a-bcfd-267c5edc7750)
-![image](https://github.com/user-attachments/assets/c4eb1fd4-1771-4bc9-8388-581118e69935)
-
-### 식재료 소비 기록 기능
-![image](https://github.com/user-attachments/assets/ba92e925-003a-4105-8c51-c0724eff8e01)
-![image](https://github.com/user-attachments/assets/682c88ef-da06-442c-b485-002f7aac0d94)
-![image](https://github.com/user-attachments/assets/8657fe4f-a6b5-474a-a17f-095c062f1670)
-
-
-
-
+![{BAF6F659-214F-4EB6-8E80-812BA5599D0B}](https://github.com/user-attachments/assets/01878f82-211a-4517-8b3e-e868797b796a)
+![{1762CE3A-854E-4A7A-A750-6F78053640E3}](https://github.com/user-attachments/assets/4f9c6c4e-e384-4d91-b564-28539ac657c9)
+![{376F001B-3732-452A-9467-F61A12B2BA72}](https://github.com/user-attachments/assets/05e79475-3baa-4b3d-a724-f527ea4a41f5)
+![{C7BACF1C-48FD-47EC-913B-63C2BB912939}](https://github.com/user-attachments/assets/e9f26644-e21b-451f-862f-c98b5350f1c5)
 
 # 기술스택
 - **프로그래밍 언어** : 
