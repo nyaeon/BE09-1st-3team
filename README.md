@@ -19,7 +19,7 @@
 # 유사 프로그램 분석
 1. BEEP
 ### 식재료 등록 페이지
-<img src="https://github.com/user-attachments/assets/1945b183-09fd-4372-ab02-af0cd95891d7  width="200" height="400"/>
+<img src="![image](https://github.com/user-attachments/assets/6c3f9f41-b4dc-4c6c-93da-54e8ab3572e1)" width="200" height="400"/>
 <br>
 ### 유통기한 확인 페이지
 <br>
