@@ -23,8 +23,7 @@
 
 <br>
 ### 유통기한 확인 페이지
-<br>
-![image](https://github.com/user-attachments/assets/cf6da847-2be0-4e2a-8027-b6018d1e1262)
+![image](https://github.com/user-attachments/assets/64a01a91-3043-4cd3-ad0f-baa1c71a1815)
 
 
 2. 만개의 레시피
