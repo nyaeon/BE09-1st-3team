@@ -29,12 +29,14 @@
 
 ### 냉장고 식재료 관리, 식비 절감의 핵심
 식재료 관리의 중요성은 단순히 유통기한을 지키는 것에 그치지 않습니다. 중복 구매나 식품 폐기를 방지하려면 냉장고 속 식재료 현황을 철저히 파악하는 것이 중요합니다. 냉동실에 유통기한 지난 식품이나 냉장실에 오래된 반찬이 방치되는 일이 빈번히 발생하는데, 이는 식비뿐만 아니라 식품 쓰레기 발생, 에너지 낭비, 시간 손실 등 다양한 문제를 초래합니다.
+
 ![image](https://github.com/user-attachments/assets/e943a637-c627-4335-a2e3-a6e20056ea0e)
 
 출처- [재테크 Lab](https://www.thescoop.co.kr/news/articleView.html?idxno=304299)
 
 ### MZ세대, 요리 붐에 빠지다… 기업들이 먼저 눈치 챘다
 MZ세대의 건강과 요리에 대한 관심이 높아지면서, 식재료에 대한 관심도 급증하고 있다. 이에 따라 식음료 관련 기업들이 MZ세대의 문화와 트렌드를 반영한 다양한 팝업샵을 개최하며 그들의 관심을 사로잡고 있다.
+
 ![image](https://github.com/user-attachments/assets/463d1834-ec6a-4758-bd77-2abbed721b47)
 
 출처- [사례뉴스](https://www.casenews.co.kr/news/articleView.html?idxno=12301)
