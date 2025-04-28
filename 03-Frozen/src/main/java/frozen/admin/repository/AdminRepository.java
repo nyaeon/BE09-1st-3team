@@ -55,7 +55,7 @@ public class AdminRepository {
     }
 
 
-    public List<Recipe> selectAllRecipes(Connection con) {
+    public List<Recipe> selectRecipe(Connection con) {
 
         List<Recipe> list = new ArrayList<>();
         PreparedStatement pstmt = null;

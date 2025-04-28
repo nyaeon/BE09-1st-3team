@@ -33,11 +33,11 @@ public class AdminService {
         return result;
     }
 
-    public List<Recipe> selectAllRecipes() {
+    public List<Recipe> selectRecipe() {
 
         Connection con = getConnection();
 
-        List<Recipe> recipes = ar.selectAllRecipes(con);
+        List<Recipe> recipes = ar.selectRecipe(con);
 
         close(con);
 
