@@ -177,7 +177,7 @@
   - 식재료 소비 기록 서비스 (Ingredient Usage Log Service) : 식재료 소비 및 폐기 기록 확인
 
 ## 2. 서비스 구성 및 정의
-### 2.1 회원 관리 서비스 (Member Management Service)
+### 2.1 회원 관리 서비스 (Member Management Service) - 박창준님
 - 역할: 회원 가입, 로그인, 회원 정보 관리
 - 책임:
   - 사용자 계정 등록 및 인증
@@ -187,7 +187,7 @@
   - ```MemberController.java```
   - ```MemberService.java```
   - ```MemberRepository.java```
-### 2.2 식재료 관리 서비스 (Ingredient Management Service)
+### 2.2 식재료 관리 서비스 (Ingredient Management Service) - 임현우님
 - 역할: 식재료 등록, 조회, 수정, 삭제
 - 책임:
   - 식재료 이름, 수량, 유통기한, 보관 위치 등록
@@ -197,7 +197,7 @@
   - ```IngredientController.java```
   - ```ingredientService.java```
   - ```ingredientRepository.java```
-### 2.3 유통기한 관리 서비스 (Expiration Confirmation Service)
+### 2.3 유통기한 관리 서비스 (Expiration Confirmation Service) - 이나영님
 - 역할: 유통기한 임박 및 초과 재료 확인
 - 책임:
   - 유통기한 임박 재료 목록 제공 (금일~3일 후)
@@ -206,7 +206,7 @@
   - ```ExpirationController.java```
   - ```ExpirationService.java```
   - ```ExpirationRepository.java```
-### 2.4 레시피 추천 서비스 (Recipe Recommendation Service)
+### 2.4 레시피 추천 서비스 (Recipe Recommendation Service) - 이나영님
 - 역할: 식재료 기반 레시피 추천
 - 책임:
   - 등록된 식재료를 기반으로 레시피 추천
@@ -215,7 +215,7 @@
   - ```RecommendController.java```
   - ```RecommendService.java```
   - ```RecommendRepository.java```
-### 2.5 관리자 업무 서비스 (Admin Task Service)
+### 2.5 관리자 업무 서비스 (Admin Task Service) - 임나연님
 - 역할: 레시피 등록, 수정, 삭제
 - 책임:
   - 관리자가 새로운 레시피 등록 및 수정
@@ -225,7 +225,7 @@
   - ```AdminController.java```
   - ```AdminService.java```
   - ```AdminRepository.java```
-### 2.6 식재료 소비 기록 서비스 (Ingredient Usage Log Service)
+### 2.6 식재료 소비 기록 서비스 (Ingredient Usage Log Service) - 임현우님
 - 역할: 식재료 소비 및 폐기 기록 관리
 - 책임:
   - 폐기된 재료 기록
@@ -236,7 +236,7 @@
   - ```ManagementRepository.java```
  
 ## 3. CRUD(Create:생성, Read:조회, Update:수정, Delete:삭제)
-### 3-1. 회원 관리 서비스 (MemberService)
+### 3-1. 회원 관리 서비스 (MemberService) - 박창준님
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
 | Member | Create | `signUp(Member member)` | 회원 가입 |
@@ -245,7 +245,7 @@
 | Member | Delete | `deleteMemberInfo(String userId)` | 회원 탈퇴 |
 | Save_Recipe | Read | `showFavoriteRecipes(String userId)` | 관심 레시피 목록 조회 |
 | Save_Recipe | Delete | `deleteFavoriteRecipe(String userId, String recipeName)` | 관심 레시피 삭제 |
-### 3-2. 관리자 레시피 관리 서비스 (AdminService)
+### 3-2. 관리자 레시피 관리 서비스 (AdminService) - 임나연님
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
 | Recipe | Create | `insertRecipe(Recipe recipe)` | 레시피 등록 |
@@ -253,25 +253,25 @@
 | Recipe | Read | `getRecipeByName(String name)` | 레시피 이름으로 조회 |
 | Recipe | Update | `updateRecipe(Recipe recipe, String oldName)` | 레시피 수정 |
 | Recipe | Delete | `deleteRecipe(String name)` | 레시피 삭제 |
-### 3-3. 식재료 관리 서비스 (IngredientService)
+### 3-3. 식재료 관리 서비스 (IngredientService) - 임현우님
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
 | Ingredients | Create | `registIngredient(Ingredients ingredient, String userId)` | 식재료 등록 |
 | Ingredients | Read | `checkIngredient(String userId)` | 식재료 재고 확인 |
 | Ingredients | Update | `modifyIngredient(Ingredients modIng)` | 식재료 정보 수정 |
 | Ingredients | Delete | `removeIngredient(String name, LocalDate date, String userId)` | 식재료 삭제 |
-### 3-4. 유통기한 확인 서비스 (ExpirationService)
+### 3-4. 유통기한 확인 서비스 (ExpirationService) - 이나영님
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
 | Ingredients | Read | `searchApp(Ingredients ing, String userId)` | 유통기한 임박 재료 조회 |
 | Ingredients | Read | `searchExc(Ingredients ing, String userId)` | 유통기한 초과 재료 조회 |
-### 3-5. 레시피 추천 서비스 (RecommendService)
+### 3-5. 레시피 추천 서비스 (RecommendService) - 이나영님
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
 | Save_Recipe | Create | `saveRecipe(String recipeName)` | 관심 레시피 저장 |
 | Ingredients | Read | `searchIng(String userId)` | 등록된 식재료 조회 |
 | Recipe | Read | `searchRecipe(Recipe recipe)` | 레시피 검색 |
-### 3-6. 식재료 소비 기록 서비스 (ManagementService)
+### 3-6. 식재료 소비 기록 서비스 (ManagementService) - 임현우
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
 | Exp_Ingredients | Read | `serchIngredient(String id)` | 폐기된 재료 조회 |
