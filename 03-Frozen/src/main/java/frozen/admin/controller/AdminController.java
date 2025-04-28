@@ -36,9 +36,9 @@ public class AdminController {
                     Recipe recipe = ac.getRecipeFromUser(sc);
                     ac.insertRecipe(recipe);
                 }
-                case 2 -> ac.selectAllRecipes();
-                case 3 -> ac.updateRecipeFlow(sc);
-                case 4 -> ac.deleteRecipeFlow(sc);
+                case 2 -> ac.selectRecipe();
+                case 3 -> ac.updateRecipe(sc);
+                case 4 -> ac.deleteRecipe(sc);
                 case 0 -> {
                     return;
                 }
@@ -59,8 +59,8 @@ public class AdminController {
     }
 
     // 레시피 이름 목록 조회 후 상세 조회
-    public void selectAllRecipes() {
-        List<Recipe> list = as.selectAllRecipes();
+    public void selectRecipe() {
+        List<Recipe> list = as.selectRecipe();
 
         if (list.isEmpty()) {
             System.out.println("❌ 등록된 레시피가 없습니다.");
@@ -87,7 +87,7 @@ public class AdminController {
     }
 
     // 레시피 수정
-    public void updateRecipeFlow(Scanner sc) throws SQLException {
+    public void updateRecipe(Scanner sc) throws SQLException {
         System.out.print("🧻 수정할 레시피의 이름을 입력하세요: ");
         String oldName = sc.nextLine();
         Recipe recipe = as.getRecipeByName(oldName);
@@ -138,15 +138,18 @@ public class AdminController {
         int result = as.updateRecipe(recipe, oldName);
         if (result > 0) {
             System.out.println("✅ 레시피가 성공적으로 수정되었습니다!");
+            System.out.println("수정된 레시피:");
+            System.out.println(recipe);
         } else if (result == -1) {
             System.out.println("⚠️ 해당 레시피가 존재하지 않습니다.");
         } else {
             System.out.println("❌ 레시피 수정 실패!");
         }
+
     }
 
     // 레시피 삭제
-    public void deleteRecipeFlow(Scanner sc) {
+    public void deleteRecipe(Scanner sc) {
         System.out.print("➖ 삭제할 레시피의 이름을 입력하세요: ");
         String name = sc.nextLine();
         try {
