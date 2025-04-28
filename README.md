@@ -243,8 +243,8 @@
 | Member | Read | `getMemberInfo(Member mem)` | 회원 정보 조회 |
 | Member | Update | `updateMemberInfo(Member member)` | 회원 정보 수정 |
 | Member | Delete | `deleteMemberInfo(String userId)` | 회원 탈퇴 |
-| FavoriteRecipe | Read | `showFavoriteRecipes(String userId)` | 관심 레시피 목록 조회 |
-| FavoriteRecipe | Delete | `deleteFavoriteRecipe(String userId, String recipeName)` | 관심 레시피 삭제 |
+| Save_Recipe | Read | `showFavoriteRecipes(String userId)` | 관심 레시피 목록 조회 |
+| Save_Recipe | Delete | `deleteFavoriteRecipe(String userId, String recipeName)` | 관심 레시피 삭제 |
 ### 3-2. 관리자 레시피 관리 서비스 (AdminService)
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
@@ -268,15 +268,15 @@
 ### 3-5. 레시피 추천 서비스 (RecommendService)
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
-| FavoriteRecipe | Create | `saveRecipe(String recipeName)` | 관심 레시피 저장 |
+| Save_Recipe | Create | `saveRecipe(String recipeName)` | 관심 레시피 저장 |
 | Ingredients | Read | `searchIng(String userId)` | 등록된 식재료 조회 |
 | Recipe | Read | `searchRecipe(Recipe recipe)` | 레시피 검색 |
 ### 3-6. 식재료 소비 기록 서비스 (ManagementService)
 | 데이터 대상 | 작업 | 메소드명 | 설명 |
 |:-----------|:----|:---------|:----|
-| Management | Read | `serchIngredient(String id)` | 폐기된 재료 조회 |
-| Management | Read | `oftenconsumIngredient(String id)` | 자주 소비한 재료 조회 |
-| Management | Update | `updateDelete(Management menu)` | 식재료 소비/폐기 기록 업데이트 |
+| Exp_Ingredients | Read | `serchIngredient(String id)` | 폐기된 재료 조회 |
+| Exp_Ingredients | Read | `oftenconsumIngredient(String id)` | 자주 소비한 재료 조회 |
+| Exp_Ingredients | Update | `updateDelete(Management menu)` | 식재료 소비/폐기 기록 업데이트 |
 ## 4. 서비스 연동 흐름도
 - 사용자는 회원 가입 및 로그인을 통해 인증 완료
 - 인증된 사용자는 식재료 추가 및 조회 기능 이용
@@ -360,7 +360,7 @@ https://www.notion.so/coffit23/075698acf1c24ce7878d840a9aac30d9
 모두 정말 고생 많으셨습니다! ☺️👍
 
 ### 이나영
-  - 회고 작성 칸
+  - 한 달 동안 배운 내용을 바탕으로 첫 번째 프로젝트를 진행하였다. 팀원들과 함께 기획부터 실제 구현, 보고서 작성까지 전 과정을 경험하면서, 비록 간단한 프로젝트였지만 짧은 시간 안에 많은 것을 느끼고 배울 수 있었다. 특히 수업 시간에 배웠던 내용을 직접 프로젝트에 적용해보면서 개념을 더욱 명확하게 이해할 수 있었다. 처음에는 JDBC를 이용해 데이터베이스에 직접 연결하고, CRUD 기능을 수행하여 콘솔창에 원하는 결과를 출력하는 데까지 꽤 많은 시간이 소요되었다. 수업 시간에 작성했던 코드를 참고하고 이해하여 응용해야 했기 때문에, 초반에는 다소 헷갈리는 부분도 있었다. 그러나 프로젝트를 진행할수록 비슷한 기능을 구현하는 데 걸리는 시간이 점점 짧아지면서, 스스로 성장하고 있다는 것을 느낄 수 있었다. 또한 학부생 시절과 달리, 패키지 구조와 계층 구조를 신경 쓰며 코드를 작성해본 덕분에 프로젝트의 파일 구성과 구조가 훨씬 명확하게 정리되었다. 강사님께서 파일 관리와 추후 병합을 고려하여 새로운 브랜치를 생성하고 merge하는 방식으로 깃 관리를 해야 한다고 강조하셨지만, 코드 구현에만 집중하다 보니 이를 제대로 하지 못한 점은 아쉬움으로 남는다. 이외에도 작은 아쉬움들이 있었지만, 팀원들과 협력하여 하나의 결과물을 완성했다는 것에 큰 뿌듯함을 느꼈다. 이번 프로젝트 경험을 바탕으로 다음 프로젝트에서는 더 나은 깃 관리, 협업, 코드 품질을 목표로 한층 성장한 모습을 보여주고 싶다. 앞으로도 꾸준히 노력하여 더 좋은 결과물을 만들어낼 수 있도록 노력할 것이다.
 
 ### 임현우
   - 첫 프로젝트로 이틀이라는 짧은 시간 동안 식재료 관리 및 유통기한 알림 시스템을 JAVA를 이용해 팀 프로젝트로 진행하며 많은 경험을 했다. 우리 팀은 다 같이 프로젝트 기획을 하며 데이터 모델링 설계에도 모두 참여했다. 그 후 JAVA를 통해 기능 구현 부분은 역할을 나누어 진행했는데, 이번 프로젝트에서 나는 식재료 CRUD 기능과 **식재료 소비 기록(섭취 완료/유통기한 폐기로 인한 삭제된 식재료 조회 기능)**을 맡았다. 처음에는 SQL 문법을 자바와 함께 사용해 데이터를 조회하고 조작하는 과정이 익숙하지 않아, 간단한 CRUD 작업에도 어려움을 많이 느꼈다. 그때마다 배운 내용을 다시 복습하며 문제를 해결하려고 노력했다. 이번 프로젝트를 통해 디버깅의 중요성을 알게 되었고, 내 코드가 어느 부분까지 제대로 작동하는지를 확인하기 위해 중간중간 출력문을 삽입해 과정을 추적했다. 그 과정에서 시간이 다소 오래 걸려, 결국 시간 안에 원하는 기능 구현을 완성하지 못한 점이 가장 아쉬웠다. 또한 첫 협업 프로젝트였기 때문에 팀원들과의 소통을 더 잘할 수 있지 않았을까 하는 아쉬움도 남는다. 프로젝트 도중 데이터 테이블을 수정해야 하는 상황이 발생했고, 이로 인해 코드 수정이 많아졌던 것도 어려운 부분 중 하나였다. 다음 프로젝트에서는 팀원들과 더욱 활발하게 소통하고, 특히 데이터 설계 부분에서 더 꼼꼼하게 대화를 나누어 테이블 수정으로 인한 대규모 코드 수정 상황을 줄여야겠다고 느꼈다. 또한, 내가 생각하는 대로 코드를 구현할 수 있도록 코딩 연습을 더 많이 해야겠다는 다짐도 하게 되었다. 첫 프로젝트여서 아쉬움이 많이 남지만, 팀원들과 함께 문제를 해결해 나가는 과정을 통해 많은 것을 배울 수 있었던 값진 경험이었다. 
