@@ -195,8 +195,8 @@
   - 식재료 정보 수정 및 삭제
 - 구성 요소:
   - ```IngredientController.java```
-  - ```ingredientService.java```
-  - ```ingredientRepository.java```
+  - ```IngredientService.java```
+  - ```IngredientRepository.java```
 ### 2.3 유통기한 관리 서비스 (Expiration Confirmation Service) - 이나영님
 - 역할: 유통기한 임박 및 초과 재료 확인
 - 책임:
