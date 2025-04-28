@@ -25,7 +25,7 @@
 기온 상승으로 인해 식재료의 부패 속도가 눈에 띄게 빨라지면서, 식품 위생과 안전에 대한 경각심이 높아지고 있습니다. 이에 따라 식재료의 보관, 관리, 신선도 유지에 대한 수요가 증가하고 있으며, 이를 *효율적으로 지원할 수 있는 서비스나 시스템의 필요성도 함께 커지고 있습니다.
 ![image](https://github.com/user-attachments/assets/7c2458e0-7d4c-4437-9ed5-ebde7613d782)
 
-[푸드 & 메드](http://www.foodnmed.com/news/articleView.html?idxno=20405)
+출처- [푸드 & 메드](http://www.foodnmed.com/news/articleView.html?idxno=20405)
 
 ---
 
