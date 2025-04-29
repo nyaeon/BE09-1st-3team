@@ -340,6 +340,9 @@ MZ세대의 건강과 요리에 대한 관심이 높아지면서, 식재료에 �
 
 (관리자) 로그인 → 관리자 업무 → 레시피 등록/수정/삭제/조회
 
+![image](https://github.com/user-attachments/assets/dd8173a3-98ca-4a8b-8361-b2c36c5f5bbe)
+
+
 # 4.주요 기능 명세(요약)
 ![image](https://github.com/user-attachments/assets/932d1d5f-cee1-49bf-8ad8-3fdc38080f07)
 
