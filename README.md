@@ -3,12 +3,12 @@
 # 개요
 - 프로젝트명 : 냉장GO - 식재료 관리와 유통기한 알림 시스템
 - 프로젝트 기간 : 2025-04-22 ~ 2025-04-24
----
+--- 
 # 팀원 구성
-| 임나연 | 이나영 | 임현우 | 박창준 |
-|--------|--------|--------|--------|
-| ![임나연](https://avatars.githubusercontent.com/u/106491547?v=4) | ![이나영](https://avatars.githubusercontent.com/u/123456789?v=4) | ![임현우](https://avatars.githubusercontent.com/u/106491547?v=4) | ![박창준](https://avatars.githubusercontent.com/u/123456789?v=4) |
-| [GitHub](https://github.com/nyaeon) | [GitHub](https://github.com/NYoungLEE) | [GitHub](https://github.com/LimHub) | [GitHub](https://github.com/changjunpark13) |
+| 박경빈 | 배기열 | 이석진 | 이나영 | 임나연 |
+|--------|--------|--------|--------|--------|
+| ![박경빈](https://avatars.githubusercontent.com/u/124248292?v=4) | ![배기열](https://avatars.githubusercontent.com/u/203373298?v=4)|![이석진](https://avatars.githubusercontent.com/u/23104248?v=4)| ![이나영](https://avatars.githubusercontent.com/u/203925759?v=4) |  ![임나연](https://avatars.githubusercontent.com/u/106491547?v=4) |
+| [GitHub](https://github.com/binipk) | [GitHub](https://github.com/GIYEOL1117) | [GitHub]((https://github.com/Othereum) | [GitHub](https://github.com/NYoungLEE) |  [GitHub](https://github.com/nyaeon) |
 ---
 # 목적 및 배경
 - "냉장GO" 프로젝트의 목적은 사용자가 식재료를 효율적으로 관리하고, 유통기한에 따른 소비 패턴을 분석하여 낭비를 최소화하며, 다양한 레시피를 통해 식재료를 유용하게 활용할 수 있도록 돕는 것입니다. 이 시스템은 냉장고에 보관된 식재료의 정보를 체계적으로 관리하고, 유통기한 임박 또는 유통기한이 지난 재료를 빠르게 확인하며, 사용자에게 보관된 식재료를 바탕으로 레시피를 추천하고, 소비 패턴 정보를 제공합니다. 또한, 사용자 계정 관리 기능을 통해 개인 맞춤형 서비스를 제공하여, 전반적인 식생활의 효율성을 높이는 데 기여하고자 합니다.
